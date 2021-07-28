@@ -42,13 +42,14 @@ namespace UI
             this.mainPanel = new System.Windows.Forms.Panel();
             this.dataGridPanel = new System.Windows.Forms.Panel();
             this.productsGridView = new System.Windows.Forms.DataGridView();
-            this.logoPictureBox = new System.Windows.Forms.PictureBox();
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Details = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.separator = new System.Windows.Forms.Panel();
+            this.btnAddProduct = new System.Windows.Forms.Button();
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -73,6 +74,9 @@ namespace UI
             this.titleBar.Name = "titleBar";
             this.titleBar.Size = new System.Drawing.Size(1126, 51);
             this.titleBar.TabIndex = 0;
+            this.titleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseDown);
+            this.titleBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseMove);
+            this.titleBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseUp);
             // 
             // btnMaximize
             // 
@@ -137,6 +141,7 @@ namespace UI
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(40)))));
+            this.mainPanel.Controls.Add(this.btnAddProduct);
             this.mainPanel.Controls.Add(this.dataGridPanel);
             this.mainPanel.Controls.Add(this.logoPictureBox);
             this.mainPanel.Controls.Add(this.separator);
@@ -155,7 +160,7 @@ namespace UI
             this.dataGridPanel.Location = new System.Drawing.Point(74, 162);
             this.dataGridPanel.Name = "dataGridPanel";
             this.dataGridPanel.Padding = new System.Windows.Forms.Padding(1);
-            this.dataGridPanel.Size = new System.Drawing.Size(977, 516);
+            this.dataGridPanel.Size = new System.Drawing.Size(979, 518);
             this.dataGridPanel.TabIndex = 0;
             // 
             // productsGridView
@@ -193,22 +198,8 @@ namespace UI
             this.productsGridView.Location = new System.Drawing.Point(4, 4);
             this.productsGridView.Name = "productsGridView";
             this.productsGridView.RowTemplate.ReadOnly = true;
-            this.productsGridView.Size = new System.Drawing.Size(969, 508);
+            this.productsGridView.Size = new System.Drawing.Size(973, 512);
             this.productsGridView.TabIndex = 2;
-            // 
-            // logoPictureBox
-            // 
-            this.logoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.Image")));
-            this.logoPictureBox.Location = new System.Drawing.Point(105, 3);
-            this.logoPictureBox.Name = "logoPictureBox";
-            this.logoPictureBox.Size = new System.Drawing.Size(213, 119);
-            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logoPictureBox.TabIndex = 1;
-            this.logoPictureBox.TabStop = false;
-            // 
-            // productBindingSource
-            // 
-            this.productBindingSource.DataSource = typeof(Models.Entities.Product);
             // 
             // Code
             // 
@@ -241,10 +232,20 @@ namespace UI
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(40)))));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             this.Price.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Price.HeaderText = "Precio";
+            this.Price.HeaderText = "Precio ($)";
             this.Price.Name = "Price";
             this.Price.ReadOnly = true;
             this.Price.Width = 128;
+            // 
+            // logoPictureBox
+            // 
+            this.logoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.Image")));
+            this.logoPictureBox.Location = new System.Drawing.Point(105, 3);
+            this.logoPictureBox.Name = "logoPictureBox";
+            this.logoPictureBox.Size = new System.Drawing.Size(213, 119);
+            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logoPictureBox.TabIndex = 1;
+            this.logoPictureBox.TabStop = false;
             // 
             // separator
             // 
@@ -254,8 +255,26 @@ namespace UI
             this.separator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
             this.separator.Location = new System.Drawing.Point(85, 127);
             this.separator.Name = "separator";
-            this.separator.Size = new System.Drawing.Size(950, 3);
+            this.separator.Size = new System.Drawing.Size(952, 3);
             this.separator.TabIndex = 0;
+            // 
+            // btnAddProduct
+            // 
+            this.btnAddProduct.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddProduct.ForeColor = System.Drawing.Color.White;
+            this.btnAddProduct.Location = new System.Drawing.Point(410, 24);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(88, 84);
+            this.btnAddProduct.TabIndex = 2;
+            this.btnAddProduct.Text = "Agregar";
+            this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
+            // 
+            // productBindingSource
+            // 
+            this.productBindingSource.DataSource = typeof(Models.Entities.Product);
             // 
             // MainFrm
             // 
@@ -298,11 +317,12 @@ namespace UI
         private System.Windows.Forms.DataGridView productsGridView;
         private System.Windows.Forms.Panel dataGridPanel;
         private System.Windows.Forms.BindingSource productBindingSource;
+        private System.Windows.Forms.Panel separator;
         private System.Windows.Forms.DataGridViewTextBoxColumn Code;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Details;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.Panel separator;
+        private System.Windows.Forms.Button btnAddProduct;
     }
 }
 
