@@ -1,13 +1,19 @@
-﻿using System;
+﻿using Infrastructure.Controllers;
+using System;
 using System.Windows.Forms;
 
 namespace UI
 {
     public partial class MainFrm : Form
     {
+        private readonly ProductsController _productsController;
+
         public MainFrm()
         {
+            _productsController = new ProductsController();        
             InitializeComponent();
+
+            productsGridView.DataSource = _productsController.Products;
         }
 
         private void btnClose_Click(object sender, EventArgs e) => Application.Exit();
