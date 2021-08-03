@@ -1,5 +1,8 @@
 ﻿using Infrastructure.Controllers;
+using Models.Entities;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace UI
@@ -17,10 +20,8 @@ namespace UI
         public MainFrm()
         {
             InitializeComponent();
-
-            _productsController = new ProductsController();        
-
-            productsGridView.DataSource = _productsController.Products;
+            productsGridView.DataSource = new List<Product>();
+            _productsController = new ProductsController(productsGridView);        
         }
 
         #region Control Form Events
@@ -68,5 +69,13 @@ namespace UI
             _move = 0;
         }
         #endregion
+
+        private void codeInputFilter_TextChanged(object sender, EventArgs e) => _productsController.FilterDataGridByCode(codeInputFilter);
+
+        private void nameInputFilter_TextChanged(object sender, EventArgs e) => _productsController.FilterDataGridByProductName(nameInputFilter);
+
+        private void detailsInputFilter_TextChanged(object sender, EventArgs e) => _productsController.FilterDataGridByDetails(detailsInputFilter);
+
+        private void priceInputFilter_ValueChanged(object sender, EventArgs e) => _productsController.FilterDataGridByPrice(priceInputFilter);
     }
 }

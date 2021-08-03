@@ -1,73 +1,176 @@
 ﻿using Models.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Infrastructure.Controllers
 {
     public class ProductsController
     {
-        #region Private Props
-
-        private IList<Product> _selectedItems { get; set; }
-
-        #endregion
-
-        #region Public Props
+        private readonly DataGridView _gridView;
 
         public List<Product> Products { get; set; }
-        public int NumberOfSelectedItems => SelectedItems?.Count ?? 0;
 
-        public IList<Product> SelectedItems
+        public ProductsController(DataGridView gridView)
         {
-            get => _selectedItems ?? new List<Product>();
-            set
-            {
-                if (value != null)
-                    _selectedItems = value;
-            }
-        }
-
-        #endregion
-
-        public ProductsController()
-        {
+            _gridView = gridView;
             Products = new List<Product>();
-            Products.Add(new Product()
-            {
-                Code = "XC520D",
-                ProductName = "Lapicera",
-                Details = "Color Azul",
-                Price = 5.00
-            });
-            Products.Add(new Product()
-            {
-                Code = "BG86C",
-                ProductName = "Acrilico",
-                Details = "50 ml Magenta",
-                Price = 125.00
-            });
+
+            //Remove
+            GenerateMockData();
         }
 
         #region Public Methods
 
-        public void AddProduct(Product product)
+        public bool AddProduct(Product product)
         {
             try
             {
-                if (product != null)
-                    Products.Add(product);
+                if (product == null)
+                    throw new Exception();
 
-                throw new Exception();
+                Products.Add(product);
+                UpdateGrid(Products);
+
+                return true;
             }
             catch (Exception)
             {
-                var title = "Error";
-                var textMessage = $"Error al cargar producto: {product.Code} {product.ProductName}";
-                MessageBox.Show(textMessage, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 
+        public void ThrowErrorMessage(string message)
+        {
+            var title = "Error";    
+            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void FilterDataGridByProductName(TextBox input)
+        {
+            if (!string.IsNullOrEmpty(input.Text))
+            {
+                var filteredData = new List<Product>();
+                var filter = input.Text.ToLower();
+
+                Products.ForEach(item => AddByProductName(filteredData, item, filter));
+
+                if (filteredData.Any())
+                    UpdateGrid(filteredData);            
+            }
+            else
+                UpdateGrid(Products);
+        }
+
+        public void FilterDataGridByCode(TextBox input)
+        {
+            if (!string.IsNullOrEmpty(input.Text))
+            {
+                var filteredData = new List<Product>();
+                var filter = input.Text.ToLower();
+
+                Products.ForEach(item => AddByCode(filteredData, item, filter));
+
+                if (filteredData.Any())
+                    UpdateGrid(filteredData);
+            }
+            else
+                UpdateGrid(Products);
+        }
+
+        public void FilterDataGridByDetails(TextBox input)
+        {
+            if (!string.IsNullOrEmpty(input.Text))
+            {
+                var filteredData = new List<Product>();
+                var filter = input.Text.ToLower();
+
+                Products.ForEach(item => AddByDetail(filteredData, item, filter));
+
+                if (filteredData.Any())
+                    UpdateGrid(filteredData);
+            }
+            else
+                UpdateGrid(Products);
+        }
+
+        public void FilterDataGridByPrice(NumericUpDown numericInput)
+        {
+            if ((double)numericInput.Value != 0.00)
+            {
+                var filteredData = new List<Product>();
+                var filter = (double)numericInput.Value;
+
+                Products.ForEach(item => AddByPrice(filteredData, item, filter));
+
+                if (filteredData.Any())
+                    UpdateGrid(filteredData);
+            }
+            else
+                UpdateGrid(Products);
+        }
+
+        #endregion
+
+        #region Private Methods
+        private void AddByProductName(List<Product> filteredData,Product product,string filter)
+        {
+            if (product.ProductName.ToLower().Contains(filter))
+                filteredData.Add(product);
+        }
+
+        private void AddByPrice(List<Product> filteredData, Product product, double filter)
+        {
+            if ((int)product.Price == (int)filter)
+                filteredData.Add(product);
+        }
+
+        private void AddByDetail(List<Product> filteredData, Product product, string filter)
+        {
+            if (product.Details.ToLower().Contains(filter))
+                filteredData.Add(product);
+        }
+
+        private void AddByCode(List<Product> filteredData, Product product, string filter)
+        {
+            if (product.Code.ToLower().Contains(filter))
+                filteredData.Add(product);
+        }
+
+        private void UpdateGrid(List<Product> products)
+        {
+            _gridView.DataSource = new List<Product>();
+            _gridView.DataSource = products;
+        }
+
+        private void GenerateMockData()
+        {
+            //Mock Data
+            Products.Add(new Product()
+            {
+                Code = string.Empty,
+                ProductName = "Lapicera",
+                Details = "Roja",
+                Price = 5.20
+            });
+            Products.Add(new Product()
+            {
+                Code = "GB520",
+                ProductName = "Bastidor",
+                Details = "Tela blanca 20x50",
+                Price = 520.00
+            });
+            Products.Add(new Product()
+            {
+                Code = "H-80006",
+                ProductName = "Acrilico Eterna",
+                Details = "Magenta 25 ml",
+                Price = 150.00
+            });
+
+            UpdateGrid(Products);
+        }
         #endregion
     }
 }

@@ -34,6 +34,8 @@ namespace UI
             this.titleBar = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnAccept = new System.Windows.Forms.Button();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.separator = new System.Windows.Forms.Panel();
             this.priceInput = new System.Windows.Forms.NumericUpDown();
@@ -44,8 +46,6 @@ namespace UI
             this.lblDescription = new System.Windows.Forms.Label();
             this.codeInput = new System.Windows.Forms.TextBox();
             this.lblCode = new System.Windows.Forms.Label();
-            this.btnAccept = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).BeginInit();
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -66,6 +66,7 @@ namespace UI
             this.btnMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMinimize.TabIndex = 1;
             this.btnMinimize.TabStop = false;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
             // titleBar
             // 
@@ -77,6 +78,9 @@ namespace UI
             this.titleBar.Name = "titleBar";
             this.titleBar.Size = new System.Drawing.Size(858, 51);
             this.titleBar.TabIndex = 2;
+            this.titleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseDown);
+            this.titleBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseMove);
+            this.titleBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseUp);
             // 
             // btnClose
             // 
@@ -90,6 +94,7 @@ namespace UI
             this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnClose.TabIndex = 0;
             this.btnClose.TabStop = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // mainPanel
             // 
@@ -110,6 +115,36 @@ namespace UI
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(858, 479);
             this.mainPanel.TabIndex = 0;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(757, 404);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(55, 49);
+            this.btnCancel.TabIndex = 11;
+            this.btnCancel.Text = "X";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnAccept
+            // 
+            this.btnAccept.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccept.ForeColor = System.Drawing.Color.White;
+            this.btnAccept.Location = new System.Drawing.Point(687, 404);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(55, 49);
+            this.btnAccept.TabIndex = 10;
+            this.btnAccept.Text = "✔";
+            this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // logoPictureBox
             // 
@@ -136,7 +171,9 @@ namespace UI
             // 
             this.priceInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
             this.priceInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.priceInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceInput.DecimalPlaces = 2;
+            this.priceInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceInput.ForeColor = System.Drawing.Color.White;
             this.priceInput.Location = new System.Drawing.Point(134, 406);
             this.priceInput.Maximum = new decimal(new int[] {
             1316134911,
@@ -144,7 +181,7 @@ namespace UI
             0,
             0});
             this.priceInput.Name = "priceInput";
-            this.priceInput.Size = new System.Drawing.Size(120, 20);
+            this.priceInput.Size = new System.Drawing.Size(120, 22);
             this.priceInput.TabIndex = 7;
             // 
             // lblPrice
@@ -163,7 +200,8 @@ namespace UI
             // 
             this.nameInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
             this.nameInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameInput.ForeColor = System.Drawing.Color.White;
             this.nameInput.Location = new System.Drawing.Point(134, 230);
             this.nameInput.Multiline = true;
             this.nameInput.Name = "nameInput";
@@ -186,10 +224,11 @@ namespace UI
             // 
             this.descriptionInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
             this.descriptionInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.descriptionInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionInput.ForeColor = System.Drawing.Color.White;
             this.descriptionInput.Location = new System.Drawing.Point(134, 315);
             this.descriptionInput.Name = "descriptionInput";
-            this.descriptionInput.Size = new System.Drawing.Size(350, 24);
+            this.descriptionInput.Size = new System.Drawing.Size(350, 26);
             this.descriptionInput.TabIndex = 3;
             // 
             // lblDescription
@@ -208,10 +247,11 @@ namespace UI
             // 
             this.codeInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
             this.codeInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.codeInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.codeInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.codeInput.ForeColor = System.Drawing.Color.White;
             this.codeInput.Location = new System.Drawing.Point(134, 139);
             this.codeInput.Name = "codeInput";
-            this.codeInput.Size = new System.Drawing.Size(200, 24);
+            this.codeInput.Size = new System.Drawing.Size(200, 26);
             this.codeInput.TabIndex = 1;
             // 
             // lblCode
@@ -225,34 +265,6 @@ namespace UI
             this.lblCode.Size = new System.Drawing.Size(71, 24);
             this.lblCode.TabIndex = 0;
             this.lblCode.Text = "Codigo";
-            // 
-            // btnAccept
-            // 
-            this.btnAccept.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccept.ForeColor = System.Drawing.Color.White;
-            this.btnAccept.Location = new System.Drawing.Point(687, 404);
-            this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(55, 49);
-            this.btnAccept.TabIndex = 10;
-            this.btnAccept.Text = "✔";
-            this.btnAccept.UseVisualStyleBackColor = true;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(757, 404);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(55, 49);
-            this.btnCancel.TabIndex = 11;
-            this.btnCancel.Text = "X";
-            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // AddProductFrm
             // 
