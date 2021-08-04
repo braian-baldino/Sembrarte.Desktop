@@ -330,8 +330,10 @@ namespace UI
             this.productsGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.productsGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
             this.productsGridView.Location = new System.Drawing.Point(4, 4);
+            this.productsGridView.MultiSelect = false;
             this.productsGridView.Name = "productsGridView";
             this.productsGridView.RowTemplate.ReadOnly = true;
+            this.productsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.productsGridView.Size = new System.Drawing.Size(977, 515);
             this.productsGridView.TabIndex = 2;
             // 
@@ -410,12 +412,14 @@ namespace UI
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
             this.editarToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.editarToolStripMenuItem.Text = "Editar";
+            this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
             // 
             // eliminarToolStripMenuItem
             // 
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
             this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
             // MainFrm
             // 

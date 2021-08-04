@@ -41,6 +41,43 @@ namespace Infrastructure.Controllers
             }
         }
 
+        public bool RemoveProduct(Product product)
+        {
+            try
+            {
+                if (product == null)
+                    throw new Exception();
+
+                var result = Products.Remove(product);
+
+                UpdateGrid(Products);
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public void DeleteProduct(DataGridView productGrid)
+        {
+            var code = (string)productGrid.SelectedRows[0].Cells[0].Value;
+            var productName = (string)productGrid.SelectedRows[0].Cells[1].Value;
+            var details = (string)productGrid.SelectedRows[0].Cells[2].Value;
+
+            foreach (var p in Products)
+            {
+                if(p.Code == code && p.ProductName == productName && p.Details == details)
+                {
+                    Products.Remove(p);
+                    break;
+                }
+            }
+
+            UpdateGrid(Products);          
+        }
+
         public void ThrowErrorMessage(string message)
         {
             var title = "Error";    

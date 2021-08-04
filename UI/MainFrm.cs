@@ -21,7 +21,7 @@ namespace UI
         {
             InitializeComponent();
             productsGridView.DataSource = new List<Product>();
-            _productsController = new ProductsController(productsGridView);        
+            _productsController = new ProductsController(productsGridView);
         }
 
         #region Control Form Events
@@ -77,5 +77,16 @@ namespace UI
         private void detailsInputFilter_TextChanged(object sender, EventArgs e) => _productsController.FilterDataGridByDetails(detailsInputFilter);
 
         private void priceInputFilter_ValueChanged(object sender, EventArgs e) => _productsController.FilterDataGridByPrice(priceInputFilter);
+
+        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (productsGridView.SelectedRows[0] != null && productsGridView.SelectedRows.Count > 0)
+                _productsController.DeleteProduct(productsGridView);
+        }
     }
 }
