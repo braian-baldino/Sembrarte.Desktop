@@ -80,12 +80,15 @@ namespace UI
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (productsGridView.SelectedRows[0] != null && productsGridView.SelectedRows.Count == 1)
+            {
 
+            }
         }
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (productsGridView.SelectedRows[0] != null && productsGridView.SelectedRows.Count > 0)
+            if (productsGridView.SelectedRows[0] != null && productsGridView.SelectedRows.Count == 1)
                 _productsController.DeleteProduct(productsGridView);
         }
     }
