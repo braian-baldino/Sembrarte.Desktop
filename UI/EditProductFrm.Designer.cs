@@ -31,6 +31,7 @@ namespace UI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditProductFrm));
             this.titleBar = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.btnMinimize = new System.Windows.Forms.PictureBox();
             this.mainPanel = new System.Windows.Forms.Panel();
@@ -46,7 +47,6 @@ namespace UI
             this.lblDescription = new System.Windows.Forms.Label();
             this.codeInput = new System.Windows.Forms.TextBox();
             this.lblCode = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).BeginInit();
@@ -69,6 +69,18 @@ namespace UI
             this.titleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseDown);
             this.titleBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseMove);
             this.titleBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseUp);
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(13, 13);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(111, 18);
+            this.lblTitle.TabIndex = 13;
+            this.lblTitle.Text = "Editar Producto";
             // 
             // btnClose
             // 
@@ -267,18 +279,6 @@ namespace UI
             this.lblCode.Size = new System.Drawing.Size(71, 24);
             this.lblCode.TabIndex = 0;
             this.lblCode.Text = "Codigo";
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(13, 13);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(111, 18);
-            this.lblTitle.TabIndex = 13;
-            this.lblTitle.Text = "Editar Producto";
             // 
             // EditProductFrm
             // 

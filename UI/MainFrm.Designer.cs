@@ -32,14 +32,15 @@ namespace UI
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.titleBar = new System.Windows.Forms.Panel();
             this.btnMaximize = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.btnRestore = new System.Windows.Forms.PictureBox();
             this.btnMinimize = new System.Windows.Forms.PictureBox();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.saveBtn = new System.Windows.Forms.PictureBox();
             this.addBtn = new System.Windows.Forms.PictureBox();
             this.lblDetailsFilter = new System.Windows.Forms.Label();
             this.detailsInputFilter = new System.Windows.Forms.TextBox();
@@ -61,13 +62,13 @@ namespace UI
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.separator = new System.Windows.Forms.Panel();
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.saveBtn = new System.Windows.Forms.PictureBox();
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestore)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).BeginInit();
             this.mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.saveBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceInputFilter)).BeginInit();
             this.dataGridPanel.SuspendLayout();
@@ -75,7 +76,6 @@ namespace UI
             this.dataGridMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.saveBtn)).BeginInit();
             this.SuspendLayout();
             // 
             // titleBar
@@ -175,14 +175,26 @@ namespace UI
             this.mainPanel.Size = new System.Drawing.Size(1134, 750);
             this.mainPanel.TabIndex = 1;
             // 
+            // saveBtn
+            // 
+            this.saveBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.saveBtn.Image = ((System.Drawing.Image)(resources.GetObject("saveBtn.Image")));
+            this.saveBtn.Location = new System.Drawing.Point(452, 45);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(43, 39);
+            this.saveBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.saveBtn.TabIndex = 13;
+            this.saveBtn.TabStop = false;
+            this.saveBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.saveBtn_MouseClick);
+            // 
             // addBtn
             // 
             this.addBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addBtn.Image = ((System.Drawing.Image)(resources.GetObject("addBtn.Image")));
-            this.addBtn.Location = new System.Drawing.Point(398, 35);
+            this.addBtn.Location = new System.Drawing.Point(387, 45);
             this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(64, 63);
-            this.addBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.addBtn.Size = new System.Drawing.Size(42, 39);
+            this.addBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.addBtn.TabIndex = 12;
             this.addBtn.TabStop = false;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
@@ -322,14 +334,14 @@ namespace UI
             this.Details,
             this.Price});
             this.productsGridView.ContextMenuStrip = this.dataGridMenu;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(40)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.productsGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(40)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.productsGridView.DefaultCellStyle = dataGridViewCellStyle8;
             this.productsGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
             this.productsGridView.Location = new System.Drawing.Point(4, 4);
             this.productsGridView.MultiSelect = false;
@@ -366,10 +378,10 @@ namespace UI
             // Price
             // 
             this.Price.DataPropertyName = "Price";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(40)))));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            this.Price.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(40)))));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            this.Price.DefaultCellStyle = dataGridViewCellStyle6;
             this.Price.HeaderText = "Precio ($)";
             this.Price.Name = "Price";
             this.Price.ReadOnly = true;
@@ -423,18 +435,6 @@ namespace UI
             // 
             this.productBindingSource.DataSource = typeof(Models.Entities.Product);
             // 
-            // saveBtn
-            // 
-            this.saveBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.saveBtn.Image = ((System.Drawing.Image)(resources.GetObject("saveBtn.Image")));
-            this.saveBtn.Location = new System.Drawing.Point(510, 35);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(64, 63);
-            this.saveBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.saveBtn.TabIndex = 13;
-            this.saveBtn.TabStop = false;
-            this.saveBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.saveBtn_MouseClick);
-            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -458,6 +458,7 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).EndInit();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.saveBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceInputFilter)).EndInit();
             this.dataGridPanel.ResumeLayout(false);
@@ -465,7 +466,6 @@ namespace UI
             this.dataGridMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.saveBtn)).EndInit();
             this.ResumeLayout(false);
 
         }
