@@ -105,7 +105,14 @@ namespace UI
             editFrm.Show();
         }
 
-        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e) => _productsController.DeleteProduct();
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var productName = (string)productsGridView?.SelectedRows[0].Cells[1].Value;
+            var response = MessageBox.Show($"Posta queres borrar el producto \"{productName}\"?", "Eliminar", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+
+            if (response == DialogResult.Yes)
+                _productsController.DeleteProduct();
+        }
 
         private void MainFrm_Load(object sender, EventArgs e)
         {
