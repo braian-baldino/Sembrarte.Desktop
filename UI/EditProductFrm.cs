@@ -1,13 +1,6 @@
 ﻿using Infrastructure.Controllers;
 using Models.Entities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI
@@ -23,9 +16,10 @@ namespace UI
         private int _moveY { get; set; }
         #endregion
 
-        public EditProductFrm(Product product)
+        public EditProductFrm(Product product,ProductsController controller)
         {
             InitializeComponent();
+            _productsController = controller;
             _product = product;
         }
 
@@ -40,8 +34,17 @@ namespace UI
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
-            
+            var editedProduct = new Product()
+            {
+                Code = codeInput.Text,
+                ProductName = nameInput.Text,
+                Details = descriptionInput.Text,
+                Price = (double)priceInput.Value
+            };
 
+            _productsController.EditProduct(editedProduct);
+            MessageBox.Show($"Producto Editado!");
+            Close();
         }
 
         private void InitializeInputValues()

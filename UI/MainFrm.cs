@@ -1,7 +1,9 @@
 ﻿using Infrastructure.Controllers;
+using Infrastructure.Serializer;
 using Models.Entities;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -25,7 +27,18 @@ namespace UI
         }
 
         #region Control Form Events
-        private void btnClose_Click(object sender, EventArgs e) => Application.Exit();
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Xml<List<Product>>.SaveBinaryXml("sembrarteDB.bin", _productsController.Products);
+                Application.Exit();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al guardar los cambios.");
+            }           
+        }
 
         private void btnMaximize_Click(object sender, EventArgs e)
         {
@@ -88,10 +101,46 @@ namespace UI
                 return;
             }
 
-            var editFrm = new EditProductFrm(selectedProduct);
+            var editFrm = new EditProductFrm(selectedProduct,_productsController);
             editFrm.Show();
         }
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e) => _productsController.DeleteProduct();
+
+        private void MainFrm_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Xml<List<Product>>.ReadBinary("sembrarteDB.bin", out List<Product> _data))
+                {
+                    _productsController.Products = _data;
+                    _productsController.UpdateGrid(_data);
+                }
+                    
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al cargar sembrarteDB.bin");
+            }
+        }
+
+        private void addBtn_Click(object sender, EventArgs e)
+        {
+            var addProductFrm = new AddProductFrm(_productsController);
+            addProductFrm.Show();
+        }
+
+        private void saveBtn_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                Xml<List<Product>>.SaveBinaryXml("sembrarteDB.bin", _productsController.Products);
+                MessageBox.Show("Se guardo todo re piola!", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al guardar los cambios.");
+            }
+        }
     }
 }

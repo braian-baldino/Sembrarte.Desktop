@@ -44,10 +44,9 @@
   <ItemGroup>
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serializer\Xml.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{094cb147-f1e3-44bd-8da0-9d8a57d24039}</Project>

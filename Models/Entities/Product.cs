@@ -1,5 +1,8 @@
-﻿namespace Models.Entities
+﻿using System;
+
+namespace Models.Entities
 {
+    [Serializable]
     public class Product
     {
         public string Code { get; set; }

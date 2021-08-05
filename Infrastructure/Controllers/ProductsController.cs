@@ -16,9 +16,6 @@ namespace Infrastructure.Controllers
         {
             _gridView = gridView;
             Products = new List<Product>();
-
-            //Remove
-            GenerateMockData();
         }
 
         #region Public Methods
@@ -55,25 +52,6 @@ namespace Infrastructure.Controllers
             }
         }
 
-        public bool RemoveProduct(Product product)
-        {
-            try
-            {
-                if (product == null)
-                    throw new Exception();
-
-                var result = Products.Remove(product);
-
-                UpdateGrid(Products);
-
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
         public void DeleteProduct()
         {
             if (_gridView.SelectedRows[0] != null && _gridView.SelectedRows.Count == 1)
@@ -93,6 +71,30 @@ namespace Infrastructure.Controllers
 
                 UpdateGrid(Products);
             }            
+        }
+
+        public void EditProduct(Product newProductInfo)
+        {
+            if (_gridView.SelectedRows[0] != null && _gridView.SelectedRows.Count == 1)
+            {
+                var code = (string)_gridView.SelectedRows[0].Cells[0].Value;
+                var productName = (string)_gridView.SelectedRows[0].Cells[1].Value;
+                var details = (string)_gridView.SelectedRows[0].Cells[2].Value;
+
+                foreach (var p in Products)
+                {
+                    if (p.Code == code && p.ProductName == productName && p.Details == details)
+                    {
+                        p.Code = newProductInfo.Code;
+                        p.ProductName = newProductInfo.ProductName;
+                        p.Details = newProductInfo.Details;
+                        p.Price = newProductInfo.Price;
+                        break;
+                    }
+                }
+
+                UpdateGrid(Products);
+            }
         }
 
         public void ThrowErrorMessage(string message)
@@ -192,7 +194,7 @@ namespace Infrastructure.Controllers
                 filteredData.Add(product);
         }
 
-        private void UpdateGrid(List<Product> products)
+        public void UpdateGrid(List<Product> products)
         {
             _gridView.DataSource = new List<Product>();
             _gridView.DataSource = products;

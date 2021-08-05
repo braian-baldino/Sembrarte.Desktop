@@ -43,7 +43,15 @@ namespace UI
             }
 
             MessageBox.Show($"Se agrego el producto {newProduct.ProductName}", "✔", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Close();
+            ClearInputs();
+        }
+
+        private void ClearInputs()
+        {
+            codeInput.Text = string.Empty;
+            nameInput.Text = string.Empty;
+            descriptionInput.Text = string.Empty;
+            priceInput.Value = (decimal)0;
         }
 
         #region Mouse Events
