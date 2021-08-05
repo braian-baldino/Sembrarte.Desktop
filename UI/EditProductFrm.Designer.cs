@@ -1,7 +1,7 @@
 ﻿
 namespace UI
 {
-    partial class AddProductFrm
+    partial class EditProductFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,10 @@ namespace UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddProductFrm));
-            this.btnMinimize = new System.Windows.Forms.PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditProductFrm));
             this.titleBar = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.PictureBox();
+            this.btnMinimize = new System.Windows.Forms.PictureBox();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
@@ -47,27 +47,13 @@ namespace UI
             this.codeInput = new System.Windows.Forms.TextBox();
             this.lblCode = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).BeginInit();
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).BeginInit();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceInput)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnMinimize
-            // 
-            this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimize.BackColor = System.Drawing.Color.Transparent;
-            this.btnMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimize.Image")));
-            this.btnMinimize.Location = new System.Drawing.Point(774, 9);
-            this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(28, 29);
-            this.btnMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMinimize.TabIndex = 1;
-            this.btnMinimize.TabStop = false;
-            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
             // titleBar
             // 
@@ -78,8 +64,8 @@ namespace UI
             this.titleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.titleBar.Location = new System.Drawing.Point(0, 0);
             this.titleBar.Name = "titleBar";
-            this.titleBar.Size = new System.Drawing.Size(858, 51);
-            this.titleBar.TabIndex = 2;
+            this.titleBar.Size = new System.Drawing.Size(857, 51);
+            this.titleBar.TabIndex = 3;
             this.titleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseDown);
             this.titleBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseMove);
             this.titleBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseUp);
@@ -90,13 +76,27 @@ namespace UI
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(818, 9);
+            this.btnClose.Location = new System.Drawing.Point(817, 9);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(28, 29);
             this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnClose.TabIndex = 0;
             this.btnClose.TabStop = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnMinimize
+            // 
+            this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimize.BackColor = System.Drawing.Color.Transparent;
+            this.btnMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimize.Image")));
+            this.btnMinimize.Location = new System.Drawing.Point(773, 9);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.Size = new System.Drawing.Size(28, 29);
+            this.btnMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimize.TabIndex = 1;
+            this.btnMinimize.TabStop = false;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
             // mainPanel
             // 
@@ -115,8 +115,8 @@ namespace UI
             this.mainPanel.Controls.Add(this.lblCode);
             this.mainPanel.Location = new System.Drawing.Point(3, 44);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(852, 475);
-            this.mainPanel.TabIndex = 0;
+            this.mainPanel.Size = new System.Drawing.Size(851, 468);
+            this.mainPanel.TabIndex = 4;
             // 
             // btnCancel
             // 
@@ -166,7 +166,7 @@ namespace UI
             this.separator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
             this.separator.Location = new System.Drawing.Point(30, 78);
             this.separator.Name = "separator";
-            this.separator.Size = new System.Drawing.Size(793, 3);
+            this.separator.Size = new System.Drawing.Size(792, 3);
             this.separator.TabIndex = 8;
             // 
             // priceInput
@@ -274,30 +274,30 @@ namespace UI
             this.lblTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(10, 12);
+            this.lblTitle.Location = new System.Drawing.Point(13, 13);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(124, 18);
-            this.lblTitle.TabIndex = 12;
-            this.lblTitle.Text = "Agregar Producto";
+            this.lblTitle.Size = new System.Drawing.Size(111, 18);
+            this.lblTitle.TabIndex = 13;
+            this.lblTitle.Text = "Editar Producto";
             // 
-            // AddProductFrm
+            // EditProductFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
-            this.ClientSize = new System.Drawing.Size(858, 522);
+            this.ClientSize = new System.Drawing.Size(857, 514);
             this.ControlBox = false;
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.titleBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "AddProductFrm";
+            this.Name = "EditProductFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Agregar Producto";
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).EndInit();
+            this.Text = "Editar";
+            this.Load += new System.EventHandler(this.EditProductFrm_Load);
             this.titleBar.ResumeLayout(false);
             this.titleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).EndInit();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox1)).EndInit();
@@ -307,22 +307,23 @@ namespace UI
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox btnMinimize;
+
         private System.Windows.Forms.Panel titleBar;
         private System.Windows.Forms.PictureBox btnClose;
+        private System.Windows.Forms.PictureBox btnMinimize;
         private System.Windows.Forms.Panel mainPanel;
-        private System.Windows.Forms.TextBox codeInput;
-        private System.Windows.Forms.Label lblCode;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnAccept;
+        private System.Windows.Forms.PictureBox logoPictureBox1;
+        private System.Windows.Forms.Panel separator;
         private System.Windows.Forms.NumericUpDown priceInput;
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.TextBox nameInput;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox descriptionInput;
         private System.Windows.Forms.Label lblDescription;
-        private System.Windows.Forms.PictureBox logoPictureBox1;
-        private System.Windows.Forms.Panel separator;
-        private System.Windows.Forms.Button btnAccept;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TextBox codeInput;
+        private System.Windows.Forms.Label lblCode;
         private System.Windows.Forms.Label lblTitle;
     }
 }

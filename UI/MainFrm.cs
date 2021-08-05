@@ -80,16 +80,18 @@ namespace UI
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (productsGridView.SelectedRows[0] != null && productsGridView.SelectedRows.Count == 1)
+            var selectedProduct = _productsController.GetSelectedProduct();
+
+            if(selectedProduct == null)
             {
-
+                _productsController.ThrowErrorMessage("Error al obtener producto seleccionado");
+                return;
             }
+
+            var editFrm = new EditProductFrm(selectedProduct);
+            editFrm.Show();
         }
 
-        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (productsGridView.SelectedRows[0] != null && productsGridView.SelectedRows.Count == 1)
-                _productsController.DeleteProduct(productsGridView);
-        }
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e) => _productsController.DeleteProduct();
     }
 }

@@ -23,6 +23,20 @@ namespace Infrastructure.Controllers
 
         #region Public Methods
 
+        public Product GetSelectedProduct()
+        {
+            if(_gridView.SelectedRows[0] != null && _gridView.SelectedRows.Count == 1)
+            {
+                var code = (string)_gridView.SelectedRows[0].Cells[0].Value;
+                var productName = (string)_gridView.SelectedRows[0].Cells[1].Value;
+                var details = (string)_gridView.SelectedRows[0].Cells[2].Value;
+
+                return Products.SingleOrDefault(p => p.Code == code && p.ProductName == productName && p.Details == details);
+            }
+
+            return null;
+        }
+
         public bool AddProduct(Product product)
         {
             try
@@ -60,22 +74,25 @@ namespace Infrastructure.Controllers
             }
         }
 
-        public void DeleteProduct(DataGridView productGrid)
+        public void DeleteProduct()
         {
-            var code = (string)productGrid.SelectedRows[0].Cells[0].Value;
-            var productName = (string)productGrid.SelectedRows[0].Cells[1].Value;
-            var details = (string)productGrid.SelectedRows[0].Cells[2].Value;
-
-            foreach (var p in Products)
+            if (_gridView.SelectedRows[0] != null && _gridView.SelectedRows.Count == 1)
             {
-                if(p.Code == code && p.ProductName == productName && p.Details == details)
-                {
-                    Products.Remove(p);
-                    break;
-                }
-            }
+                var code = (string)_gridView.SelectedRows[0].Cells[0].Value;
+                var productName = (string)_gridView.SelectedRows[0].Cells[1].Value;
+                var details = (string)_gridView.SelectedRows[0].Cells[2].Value;
 
-            UpdateGrid(Products);          
+                foreach (var p in Products)
+                {
+                    if (p.Code == code && p.ProductName == productName && p.Details == details)
+                    {
+                        Products.Remove(p);
+                        break;
+                    }
+                }
+
+                UpdateGrid(Products);
+            }            
         }
 
         public void ThrowErrorMessage(string message)
