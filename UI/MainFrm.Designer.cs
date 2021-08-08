@@ -33,6 +33,7 @@ namespace UI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.titleBar = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -341,6 +342,7 @@ namespace UI
             // 
             this.productsGridView.AllowUserToDeleteRows = false;
             this.productsGridView.AllowUserToOrderColumns = true;
+            this.productsGridView.AllowUserToResizeRows = false;
             this.productsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -373,6 +375,15 @@ namespace UI
             this.productsGridView.Location = new System.Drawing.Point(4, 4);
             this.productsGridView.MultiSelect = false;
             this.productsGridView.Name = "productsGridView";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.productsGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.productsGridView.RowHeadersVisible = false;
             this.productsGridView.RowTemplate.ReadOnly = true;
             this.productsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.productsGridView.Size = new System.Drawing.Size(833, 293);
@@ -385,7 +396,7 @@ namespace UI
             this.Code.HeaderText = "Codigo";
             this.Code.Name = "Code";
             this.Code.ReadOnly = true;
-            this.Code.Width = 150;
+            this.Code.Width = 160;
             // 
             // ProductName
             // 
@@ -393,7 +404,7 @@ namespace UI
             this.ProductName.HeaderText = "Nombre";
             this.ProductName.Name = "ProductName";
             this.ProductName.ReadOnly = true;
-            this.ProductName.Width = 240;
+            this.ProductName.Width = 260;
             // 
             // Details
             // 
@@ -401,7 +412,7 @@ namespace UI
             this.Details.HeaderText = "Detalles";
             this.Details.Name = "Details";
             this.Details.ReadOnly = true;
-            this.Details.Width = 280;
+            this.Details.Width = 300;
             // 
             // Price
             // 
@@ -413,7 +424,7 @@ namespace UI
             this.Price.HeaderText = "Precio ($)";
             this.Price.Name = "Price";
             this.Price.ReadOnly = true;
-            this.Price.Width = 122;
+            this.Price.Width = 112;
             // 
             // dataGridMenu
             // 
