@@ -116,6 +116,8 @@ namespace UI
 
         private void MainFrm_Load(object sender, EventArgs e)
         {
+            MaximumSize = SystemInformation.PrimaryMonitorMaximizedWindowSize;
+
             try
             {
                 if (Xml<List<Product>>.ReadBinary("sembrarteDB.bin", out List<Product> _data))
