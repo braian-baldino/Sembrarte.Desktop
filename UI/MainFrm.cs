@@ -3,7 +3,6 @@ using Infrastructure.Serializer;
 using Models.Entities;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -31,13 +30,13 @@ namespace UI
         {
             try
             {
-                Xml<List<Product>>.SaveBinaryXml("sembrarteDB.bin", _productsController.Products);
+                _productsController.SaveData();
                 Application.Exit();
             }
             catch (Exception)
             {
                 MessageBox.Show("Error al guardar los cambios.");
-            }           
+            }
         }
 
         private void btnMaximize_Click(object sender, EventArgs e)
@@ -95,13 +94,13 @@ namespace UI
         {
             var selectedProduct = _productsController.GetSelectedProduct();
 
-            if(selectedProduct == null)
+            if (selectedProduct == null)
             {
                 _productsController.ThrowErrorMessage("Error al obtener producto seleccionado");
                 return;
             }
 
-            var editFrm = new EditProductFrm(selectedProduct,_productsController);
+            var editFrm = new EditProductFrm(selectedProduct, _productsController);
             editFrm.Show();
         }
 
@@ -118,19 +117,7 @@ namespace UI
         {
             MaximumSize = SystemInformation.PrimaryMonitorMaximizedWindowSize;
 
-            try
-            {
-                if (Xml<List<Product>>.ReadBinary("sembrarteDB.bin", out List<Product> _data))
-                {
-                    _productsController.Products = _data;
-                    _productsController.UpdateGrid(_data);
-                }
-                    
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error al cargar sembrarteDB.bin");
-            }
+            _productsController.LoadData();
         }
 
         private void addBtn_Click(object sender, EventArgs e)
@@ -143,7 +130,7 @@ namespace UI
         {
             try
             {
-                Xml<List<Product>>.SaveBinaryXml("sembrarteDB.bin", _productsController.Products);
+                _productsController.SaveData();
                 MessageBox.Show("Se guardo todo re piola!", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception)
@@ -151,5 +138,7 @@ namespace UI
                 MessageBox.Show("Error al guardar los cambios.");
             }
         }
+
+        private void productsGridView_ColumnHeaderMouseClick_1(object sender, DataGridViewCellMouseEventArgs e) => _productsController.SortColumn(e.ColumnIndex);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Models.Entities;
+﻿using Infrastructure.Serializer;
+using Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace Infrastructure.Controllers
     public class ProductsController
     {
         private readonly DataGridView _gridView;
+        private bool SortAscending = false;
 
         public List<Product> Products { get; set; }
 
@@ -19,6 +21,65 @@ namespace Infrastructure.Controllers
         }
 
         #region Public Methods
+
+        public void LoadData()
+        {
+            try
+            {
+                if (Xml<List<Product>>.ReadBinary("sembrarteDB.bin", out List<Product> _data))
+                {
+                    Products = _data
+                        .OrderBy(x => x.Code)
+                        .ToList();
+
+                    UpdateGrid(Products);
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al cargar sembrarteDB.bin");
+            }
+        }
+
+        public void SaveData()
+        {
+            try
+            {
+                Xml<List<Product>>.SaveBinaryXml("sembrarteDB.bin", Products);
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+
+        public void SortColumn(int columnIndex)
+        {
+            List<Product> sortedData;
+            switch (_gridView.Columns[columnIndex].DataPropertyName)
+            {
+                case "Code":
+                    sortedData = SortAscending?Products.OrderBy(x => x.Code).ToList(): Products.OrderByDescending(x => x.Code).ToList();
+                    break;
+                case "ProductName":
+                    sortedData = SortAscending ? Products.OrderBy(x => x.ProductName).ToList() : Products.OrderByDescending(x => x.ProductName).ToList();
+                    break;
+                case "Details":
+                    sortedData = SortAscending ? Products.OrderBy(x => x.Details).ToList() : Products.OrderByDescending(x => x.Details).ToList();
+                    break;
+                case "Price":
+                    sortedData = SortAscending ? Products.OrderBy(x => x.Price).ToList() : Products.OrderByDescending(x => x.Price).ToList();
+                    break;
+                default:
+                    sortedData = SortAscending ? Products.OrderBy(x => x.Code).ToList() : Products.OrderByDescending(x => x.Code).ToList();
+                    break;
+            }
+
+            UpdateGrid(sortedData);
+          
+            SortAscending = !SortAscending;
+        }
 
         public Product GetSelectedProduct()
         {
