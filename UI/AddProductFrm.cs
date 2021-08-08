@@ -72,12 +72,27 @@ namespace UI
             if (_move == 1)
                 SetDesktopLocation(MousePosition.X - _moveX, MousePosition.Y - _moveY);
         }
+        private void lblTitle_MouseUp(object sender, MouseEventArgs e)
+        {
+            _move = 0;
+        }
+
+        private void lblTitle_MouseDown(object sender, MouseEventArgs e)
+        {
+            _move = 1;
+            _moveX = e.X;
+            _moveY = e.Y;
+        }
+
+        private void lblTitle_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (_move == 1)
+                SetDesktopLocation(MousePosition.X - _moveX, MousePosition.Y - _moveY);
+        }
         #endregion
 
         private void btnMinimize_Click(object sender, EventArgs e) => WindowState = FormWindowState.Minimized;
 
         private void btnClose_Click(object sender, EventArgs e) => Close();
-
-       
     }
 }

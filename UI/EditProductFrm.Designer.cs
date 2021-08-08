@@ -47,6 +47,8 @@ namespace UI
             this.lblDescription = new System.Windows.Forms.Label();
             this.codeInput = new System.Windows.Forms.TextBox();
             this.lblCode = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).BeginInit();
@@ -58,13 +60,14 @@ namespace UI
             // titleBar
             // 
             this.titleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(40)))));
+            this.titleBar.Controls.Add(this.panel2);
+            this.titleBar.Controls.Add(this.panel1);
             this.titleBar.Controls.Add(this.lblTitle);
             this.titleBar.Controls.Add(this.btnClose);
             this.titleBar.Controls.Add(this.btnMinimize);
-            this.titleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.titleBar.Location = new System.Drawing.Point(0, 0);
+            this.titleBar.Location = new System.Drawing.Point(2, 0);
             this.titleBar.Name = "titleBar";
-            this.titleBar.Size = new System.Drawing.Size(857, 51);
+            this.titleBar.Size = new System.Drawing.Size(372, 51);
             this.titleBar.TabIndex = 3;
             this.titleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseDown);
             this.titleBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseMove);
@@ -74,13 +77,16 @@ namespace UI
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(13, 13);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(111, 18);
+            this.lblTitle.Size = new System.Drawing.Size(43, 16);
             this.lblTitle.TabIndex = 13;
-            this.lblTitle.Text = "Editar Producto";
+            this.lblTitle.Text = "Editar";
+            this.lblTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblTitle_MouseDown);
+            this.lblTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblTitle_MouseMove);
+            this.lblTitle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblTitle_MouseUp);
             // 
             // btnClose
             // 
@@ -88,9 +94,9 @@ namespace UI
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(817, 9);
+            this.btnClose.Location = new System.Drawing.Point(341, 9);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(28, 29);
+            this.btnClose.Size = new System.Drawing.Size(22, 22);
             this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnClose.TabIndex = 0;
             this.btnClose.TabStop = false;
@@ -102,9 +108,9 @@ namespace UI
             this.btnMinimize.BackColor = System.Drawing.Color.Transparent;
             this.btnMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimize.Image")));
-            this.btnMinimize.Location = new System.Drawing.Point(773, 9);
+            this.btnMinimize.Location = new System.Drawing.Point(309, 8);
             this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(28, 29);
+            this.btnMinimize.Size = new System.Drawing.Size(23, 23);
             this.btnMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnMinimize.TabIndex = 1;
             this.btnMinimize.TabStop = false;
@@ -125,9 +131,9 @@ namespace UI
             this.mainPanel.Controls.Add(this.lblDescription);
             this.mainPanel.Controls.Add(this.codeInput);
             this.mainPanel.Controls.Add(this.lblCode);
-            this.mainPanel.Location = new System.Drawing.Point(3, 44);
+            this.mainPanel.Location = new System.Drawing.Point(2, 44);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(851, 468);
+            this.mainPanel.Size = new System.Drawing.Size(372, 353);
             this.mainPanel.TabIndex = 4;
             // 
             // btnCancel
@@ -136,11 +142,11 @@ namespace UI
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(757, 404);
+            this.btnCancel.Location = new System.Drawing.Point(233, 31);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(55, 49);
+            this.btnCancel.Size = new System.Drawing.Size(27, 27);
             this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "X";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -150,11 +156,11 @@ namespace UI
             // 
             this.btnAccept.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAccept.ForeColor = System.Drawing.Color.White;
-            this.btnAccept.Location = new System.Drawing.Point(687, 404);
+            this.btnAccept.Location = new System.Drawing.Point(189, 31);
             this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(55, 49);
+            this.btnAccept.Size = new System.Drawing.Size(27, 27);
             this.btnAccept.TabIndex = 10;
             this.btnAccept.Text = "✔";
             this.btnAccept.UseVisualStyleBackColor = true;
@@ -163,7 +169,7 @@ namespace UI
             // logoPictureBox1
             // 
             this.logoPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox1.Image")));
-            this.logoPictureBox1.Location = new System.Drawing.Point(46, 3);
+            this.logoPictureBox1.Location = new System.Drawing.Point(46, 8);
             this.logoPictureBox1.Name = "logoPictureBox1";
             this.logoPictureBox1.Size = new System.Drawing.Size(97, 75);
             this.logoPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -176,9 +182,9 @@ namespace UI
             | System.Windows.Forms.AnchorStyles.Right)));
             this.separator.AutoSize = true;
             this.separator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
-            this.separator.Location = new System.Drawing.Point(30, 78);
+            this.separator.Location = new System.Drawing.Point(30, 87);
             this.separator.Name = "separator";
-            this.separator.Size = new System.Drawing.Size(792, 3);
+            this.separator.Size = new System.Drawing.Size(303, 2);
             this.separator.TabIndex = 8;
             // 
             // priceInput
@@ -186,27 +192,27 @@ namespace UI
             this.priceInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
             this.priceInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.priceInput.DecimalPlaces = 2;
-            this.priceInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.priceInput.ForeColor = System.Drawing.Color.White;
-            this.priceInput.Location = new System.Drawing.Point(134, 406);
+            this.priceInput.Location = new System.Drawing.Point(47, 316);
             this.priceInput.Maximum = new decimal(new int[] {
             1316134911,
             2328,
             0,
             0});
             this.priceInput.Name = "priceInput";
-            this.priceInput.Size = new System.Drawing.Size(120, 22);
+            this.priceInput.Size = new System.Drawing.Size(92, 18);
             this.priceInput.TabIndex = 7;
             // 
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
             this.lblPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrice.ForeColor = System.Drawing.Color.White;
-            this.lblPrice.Location = new System.Drawing.Point(130, 369);
+            this.lblPrice.Location = new System.Drawing.Point(43, 291);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(64, 24);
+            this.lblPrice.Size = new System.Drawing.Size(51, 18);
             this.lblPrice.TabIndex = 6;
             this.lblPrice.Text = "Precio";
             // 
@@ -214,23 +220,23 @@ namespace UI
             // 
             this.nameInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
             this.nameInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameInput.ForeColor = System.Drawing.Color.White;
-            this.nameInput.Location = new System.Drawing.Point(134, 230);
+            this.nameInput.Location = new System.Drawing.Point(47, 190);
             this.nameInput.Multiline = true;
             this.nameInput.Name = "nameInput";
-            this.nameInput.Size = new System.Drawing.Size(300, 25);
+            this.nameInput.Size = new System.Drawing.Size(221, 25);
             this.nameInput.TabIndex = 5;
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
             this.lblName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.Color.White;
-            this.lblName.Location = new System.Drawing.Point(130, 197);
+            this.lblName.Location = new System.Drawing.Point(43, 165);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(79, 24);
+            this.lblName.Size = new System.Drawing.Size(62, 18);
             this.lblName.TabIndex = 4;
             this.lblName.Text = "Nombre";
             // 
@@ -238,54 +244,76 @@ namespace UI
             // 
             this.descriptionInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
             this.descriptionInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.descriptionInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descriptionInput.ForeColor = System.Drawing.Color.White;
-            this.descriptionInput.Location = new System.Drawing.Point(134, 315);
+            this.descriptionInput.Location = new System.Drawing.Point(47, 252);
             this.descriptionInput.Name = "descriptionInput";
-            this.descriptionInput.Size = new System.Drawing.Size(350, 26);
+            this.descriptionInput.Size = new System.Drawing.Size(266, 22);
             this.descriptionInput.TabIndex = 3;
             // 
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescription.ForeColor = System.Drawing.Color.White;
-            this.lblDescription.Location = new System.Drawing.Point(130, 282);
+            this.lblDescription.Location = new System.Drawing.Point(43, 227);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(110, 24);
+            this.lblDescription.Size = new System.Drawing.Size(61, 18);
             this.lblDescription.TabIndex = 2;
-            this.lblDescription.Text = "Descripcion";
+            this.lblDescription.Text = "Detalles";
             // 
             // codeInput
             // 
             this.codeInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
             this.codeInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.codeInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.codeInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.codeInput.ForeColor = System.Drawing.Color.White;
-            this.codeInput.Location = new System.Drawing.Point(134, 139);
+            this.codeInput.Location = new System.Drawing.Point(47, 131);
             this.codeInput.Name = "codeInput";
-            this.codeInput.Size = new System.Drawing.Size(200, 26);
+            this.codeInput.Size = new System.Drawing.Size(159, 22);
             this.codeInput.TabIndex = 1;
             // 
             // lblCode
             // 
             this.lblCode.AutoSize = true;
             this.lblCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCode.ForeColor = System.Drawing.Color.White;
-            this.lblCode.Location = new System.Drawing.Point(130, 106);
+            this.lblCode.Location = new System.Drawing.Point(43, 107);
             this.lblCode.Name = "lblCode";
-            this.lblCode.Size = new System.Drawing.Size(71, 24);
+            this.lblCode.Size = new System.Drawing.Size(56, 18);
             this.lblCode.TabIndex = 0;
             this.lblCode.Text = "Codigo";
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoSize = true;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
+            this.panel1.Location = new System.Drawing.Point(0, 41);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(372, 1);
+            this.panel1.TabIndex = 12;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.AutoSize = true;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(372, 1);
+            this.panel2.TabIndex = 13;
             // 
             // EditProductFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
-            this.ClientSize = new System.Drawing.Size(857, 514);
+            this.ClientSize = new System.Drawing.Size(376, 399);
             this.ControlBox = false;
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.titleBar);
@@ -325,5 +353,7 @@ namespace UI
         private System.Windows.Forms.TextBox codeInput;
         private System.Windows.Forms.Label lblCode;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }
