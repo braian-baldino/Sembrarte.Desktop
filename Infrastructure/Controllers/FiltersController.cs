@@ -33,49 +33,40 @@ namespace Infrastructure.Controllers
             _codeFilter = code;
             _detailsFilter = details;
             _priceFilter = price;
-        }
-
-        private IEnumerable<Product> FilterExpression(Func<Product,bool> expression) => _allProducts.Where(expression);
+        }     
 
         public void FilterDataGrid()
         {
             if (HasAnyFilter)
             {
-                List<Product> filteredData;
-
                 if (HasCodeFilter)
-                {
-                    filteredData = new List<Product>();
-                    filteredData.AddRange(FilterExpression(p => p.Code.Contains(_codeFilter.Text)));
-                    UpdateGrid(filteredData);
-                }
+                    FilterByCondition(p => p.Code.Contains(_codeFilter.Text));
 
                 if (HasNameFilter)
-                {
-                    filteredData = new List<Product>();
-                    filteredData.AddRange(FilterExpression(p => p.ProductName.Contains(_nameFilter.Text)));
-                    UpdateGrid(filteredData);
-                }
+                    FilterByCondition(p => p.ProductName.Contains(_nameFilter.Text));
 
                 if (HasDetailsFilter)
-                {
-                    filteredData = new List<Product>();
-                    filteredData.AddRange(FilterExpression(p => p.Code.Contains(_detailsFilter.Text)));
-                    UpdateGrid(filteredData);
-                }
+                    FilterByCondition(p => p.Details.Contains(_detailsFilter.Text));
 
                 if (HasPriceFilter)
-                {
-                    filteredData = new List<Product>();
-                    filteredData.AddRange(FilterExpression(p => p.Price == (double)_priceFilter.Value));
-                    UpdateGrid(filteredData);
-                }
+                    FilterByCondition(p => p.Price == (double)_priceFilter.Value);
+
             }
             else
                 UpdateGrid(_allProducts);
         }
 
-        public void UpdateGrid(List<Product> products)
+        private IEnumerable<Product> FilterExpression(Func<Product, bool> expression) => _allProducts.Where(expression);
+
+        private void FilterByCondition(Func<Product, bool> expression)
+        {
+            var filteredData = new List<Product>();
+
+            filteredData.AddRange(FilterExpression(expression));
+            UpdateGrid(filteredData);
+        }
+
+        private void UpdateGrid(List<Product> products)
         {
             _gridView.DataSource = new List<Product>();
             _gridView.DataSource = products;
