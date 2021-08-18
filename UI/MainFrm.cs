@@ -1,9 +1,7 @@
 ﻿using Infrastructure.Controllers;
-using Infrastructure.Serializer;
 using Models.Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace UI
@@ -11,6 +9,7 @@ namespace UI
     public partial class MainFrm : Form
     {
         private readonly ProductsController _productsController;
+        private FiltersController _filtersController;
 
         #region Movement Props
         private int _move { get; set; }
@@ -82,13 +81,13 @@ namespace UI
         }
         #endregion
 
-        private void codeInputFilter_TextChanged(object sender, EventArgs e) => _productsController.FilterDataGridByCode(codeInputFilter);
+        private void codeInputFilter_TextChanged(object sender, EventArgs e) => _filtersController.FilterDataGrid();
 
-        private void nameInputFilter_TextChanged(object sender, EventArgs e) => _productsController.FilterDataGridByProductName(nameInputFilter);
+        private void nameInputFilter_TextChanged(object sender, EventArgs e) => _filtersController.FilterDataGrid();
 
-        private void detailsInputFilter_TextChanged(object sender, EventArgs e) => _productsController.FilterDataGridByDetails(detailsInputFilter);
+        private void detailsInputFilter_TextChanged(object sender, EventArgs e) => _filtersController.FilterDataGrid();
 
-        private void priceInputFilter_ValueChanged(object sender, EventArgs e) => _productsController.FilterDataGridByPrice(priceInputFilter);
+        private void priceInputFilter_ValueChanged(object sender, EventArgs e) => _filtersController.FilterDataGrid();
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -118,6 +117,11 @@ namespace UI
             MaximumSize = SystemInformation.PrimaryMonitorMaximizedWindowSize;
 
             _productsController.LoadData();
+            _filtersController = new FiltersController(productsGridView, _productsController.Products,
+                nameInputFilter, 
+                codeInputFilter, 
+                detailsInputFilter, 
+                priceInputFilter);
         }
 
         private void addBtn_Click(object sender, EventArgs e)

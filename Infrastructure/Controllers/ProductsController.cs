@@ -14,7 +14,7 @@ namespace Infrastructure.Controllers
 
         public List<Product> Products { get; set; }
 
-        public ProductsController(DataGridView gridView)
+        public ProductsController(DataGridView gridView )
         {
             _gridView = gridView;
             Products = new List<Product>();
@@ -154,7 +154,7 @@ namespace Infrastructure.Controllers
                     }
                 }
 
-                UpdateGrid(Products);
+                UpdateGrid(GetGridProducts());
             }
         }
 
@@ -164,102 +164,17 @@ namespace Infrastructure.Controllers
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void FilterDataGridByProductName(TextBox input)
-        {
-            if (!string.IsNullOrEmpty(input.Text))
-            {
-                var filteredData = new List<Product>();
-                var filter = input.Text.ToLower();
-
-                Products.ForEach(item => AddByProductName(filteredData, item, filter));
-
-                if (filteredData.Any())
-                    UpdateGrid(filteredData);            
-            }
-            else
-                UpdateGrid(Products);
-        }
-
-        public void FilterDataGridByCode(TextBox input)
-        {
-            if (!string.IsNullOrEmpty(input.Text))
-            {
-                var filteredData = new List<Product>();
-                var filter = input.Text.ToLower();
-
-                Products.ForEach(item => AddByCode(filteredData, item, filter));
-
-                if (filteredData.Any())
-                    UpdateGrid(filteredData);
-            }
-            else
-                UpdateGrid(Products);
-        }
-
-        public void FilterDataGridByDetails(TextBox input)
-        {
-            if (!string.IsNullOrEmpty(input.Text))
-            {
-                var filteredData = new List<Product>();
-                var filter = input.Text.ToLower();
-
-                Products.ForEach(item => AddByDetail(filteredData, item, filter));
-
-                if (filteredData.Any())
-                    UpdateGrid(filteredData);
-            }
-            else
-                UpdateGrid(Products);
-        }
-
-        public void FilterDataGridByPrice(NumericUpDown numericInput)
-        {
-            if ((double)numericInput.Value != 0.00)
-            {
-                var filteredData = new List<Product>();
-                var filter = (double)numericInput.Value;
-
-                Products.ForEach(item => AddByPrice(filteredData, item, filter));
-
-                if (filteredData.Any())
-                    UpdateGrid(filteredData);
-            }
-            else
-                UpdateGrid(Products);
-        }
-
         #endregion
 
         #region Private Methods
-        private void AddByProductName(List<Product> filteredData,Product product,string filter)
-        {
-            if (product.ProductName.ToLower().Contains(filter))
-                filteredData.Add(product);
-        }
-
-        private void AddByPrice(List<Product> filteredData, Product product, double filter)
-        {
-            if ((int)product.Price == (int)filter)
-                filteredData.Add(product);
-        }
-
-        private void AddByDetail(List<Product> filteredData, Product product, string filter)
-        {
-            if (product.Details.ToLower().Contains(filter))
-                filteredData.Add(product);
-        }
-
-        private void AddByCode(List<Product> filteredData, Product product, string filter)
-        {
-            if (product.Code.ToLower().Contains(filter))
-                filteredData.Add(product);
-        }
-
+  
         public void UpdateGrid(List<Product> products)
         {
             _gridView.DataSource = new List<Product>();
             _gridView.DataSource = products;
         }
+
+        private List<Product> GetGridProducts() => (List<Product>)_gridView.DataSource ?? new List<Product>();
 
         private void GenerateMockData()
         {
