@@ -121,16 +121,19 @@ namespace Infrastructure.Controllers
                 var productName = (string)_gridView.SelectedRows[0].Cells[1].Value;
                 var details = (string)_gridView.SelectedRows[0].Cells[2].Value;
 
+                var gridProducts = GetGridProducts();
+
                 foreach (var p in Products)
                 {
                     if (p.Code == code && p.ProductName == productName && p.Details == details)
                     {
+                        gridProducts.Remove(p);
                         Products.Remove(p);
                         break;
                     }
                 }
 
-                UpdateGrid(Products);
+                UpdateGrid(gridProducts);
             }            
         }
 
