@@ -85,11 +85,19 @@ namespace Infrastructure.Controllers
         {
             if(_gridView.SelectedRows[0] != null && _gridView.SelectedRows.Count == 1)
             {
-                var code = (string)_gridView.SelectedRows[0].Cells[0].Value;
-                var productName = (string)_gridView.SelectedRows[0].Cells[1].Value;
-                var details = (string)_gridView.SelectedRows[0].Cells[2].Value;
+                try
+                {
+                    var code = (string)_gridView.SelectedRows[0].Cells[0].Value;
+                    var productName = (string)_gridView.SelectedRows[0].Cells[1].Value;
+                    var details = (string)_gridView.SelectedRows[0].Cells[2].Value;
+                    var price = (double)_gridView.SelectedRows[0].Cells[3].Value;
 
-                return Products.SingleOrDefault(p => p.Code == code && p.ProductName == productName && p.Details == details);
+                    return Products.SingleOrDefault(p => p.Code == code && p.ProductName == productName && p.Details == details && p.Price == price);
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
             }
 
             return null;
@@ -102,8 +110,23 @@ namespace Infrastructure.Controllers
                 if (product == null)
                     throw new Exception();
 
+                if(!IsValidProduct(product))
+                {
+                    ThrowErrorMessage("Ya existe un producto identico en la lista.");
+                    return false;
+                }
+
                 Products.Add(product);
-                UpdateGrid(Products);
+
+                var gridElements = GetGridProducts();
+
+                if (gridElements == Products)
+                    UpdateGrid(Products);
+                else
+                {
+                    gridElements.Add(product);
+                    UpdateGrid(gridElements);
+                }              
 
                 return true;
             }
@@ -137,17 +160,37 @@ namespace Infrastructure.Controllers
             }            
         }
 
-        public void EditProduct(Product newProductInfo)
+        public bool IsValidProduct(Product product)
         {
-            if (_gridView.SelectedRows[0] != null && _gridView.SelectedRows.Count == 1)
+            foreach (var p in Products)
             {
-                var code = (string)_gridView.SelectedRows[0].Cells[0].Value;
-                var productName = (string)_gridView.SelectedRows[0].Cells[1].Value;
-                var details = (string)_gridView.SelectedRows[0].Cells[2].Value;
+                if(p.Code == product.Code
+                    && p.Details == product.Details
+                    && p.ProductName == product.ProductName
+                    && p.Price == product.Price)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool EditProduct(Product newProductInfo)
+        {
+            var selectedItem = GetSelectedProduct();
+
+            if (selectedItem != null)
+            {
+                if (!IsValidProduct(newProductInfo))
+                {
+                    ThrowErrorMessage("Ya existe un producto identico en la lista.");
+                    return false;
+                }
 
                 foreach (var p in Products)
                 {
-                    if (p.Code == code && p.ProductName == productName && p.Details == details)
+                    if (p.Code == selectedItem.Code && p.ProductName == selectedItem.ProductName && p.Details == selectedItem.Details && p.Price == selectedItem.Price)
                     {
                         p.Code = newProductInfo.Code;
                         p.ProductName = newProductInfo.ProductName;
@@ -159,6 +202,10 @@ namespace Infrastructure.Controllers
 
                 UpdateGrid(GetGridProducts());
             }
+            else
+                return false;
+
+            return true;
         }
 
         public void ThrowErrorMessage(string message)

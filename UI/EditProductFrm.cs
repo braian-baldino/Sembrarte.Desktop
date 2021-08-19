@@ -42,7 +42,11 @@ namespace UI
                 Price = (double)priceInput.Value
             };
 
-            _productsController.EditProduct(editedProduct);
+            var success = _productsController.EditProduct(editedProduct);
+
+            if (!success)
+                return;
+
             MessageBox.Show($"Producto Editado!");
             Close();
         }

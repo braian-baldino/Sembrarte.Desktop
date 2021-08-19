@@ -23,6 +23,14 @@ namespace UI
 
         private void btnCancel_Click(object sender, EventArgs e) => Close();
 
+        public void SetInputs(Product product)
+        {
+            codeInput.Text = product.Code;
+            descriptionInput.Text = product.Details;
+            nameInput.Text = product.ProductName;
+            priceInput.Value = (decimal)product.Price;
+        }
+
         private void btnAccept_Click(object sender, EventArgs e)
         {
             var newProduct = new Product()
@@ -40,6 +48,7 @@ namespace UI
                 var errorMessage = $"Error al cargar producto: {newProduct.Code} {newProduct.ProductName}";
                 _productsController.ThrowErrorMessage(errorMessage);
                 Close();
+                return;
             }
 
             MessageBox.Show($"Se agrego el producto {newProduct.ProductName}", "✔", MessageBoxButtons.OK, MessageBoxIcon.Information);

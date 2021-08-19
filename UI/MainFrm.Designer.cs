@@ -65,6 +65,7 @@ namespace UI
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.separator = new System.Windows.Forms.Panel();
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.duplicarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -431,21 +432,22 @@ namespace UI
             this.dataGridMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataGridMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editarToolStripMenuItem,
+            this.duplicarToolStripMenuItem,
             this.eliminarToolStripMenuItem});
             this.dataGridMenu.Name = "dataGridMenu";
-            this.dataGridMenu.Size = new System.Drawing.Size(130, 48);
+            this.dataGridMenu.Size = new System.Drawing.Size(181, 92);
             // 
             // editarToolStripMenuItem
             // 
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editarToolStripMenuItem.Text = "Editar";
             this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
             // 
             // eliminarToolStripMenuItem
             // 
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
@@ -473,6 +475,13 @@ namespace UI
             // productBindingSource
             // 
             this.productBindingSource.DataSource = typeof(Models.Entities.Product);
+            // 
+            // duplicarToolStripMenuItem
+            // 
+            this.duplicarToolStripMenuItem.Name = "duplicarToolStripMenuItem";
+            this.duplicarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.duplicarToolStripMenuItem.Text = "Duplicar";
+            this.duplicarToolStripMenuItem.Click += new System.EventHandler(this.duplicarToolStripMenuItem_Click);
             // 
             // MainFrm
             // 
@@ -542,6 +551,7 @@ namespace UI
         private System.Windows.Forms.PictureBox saveBtn;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripMenuItem duplicarToolStripMenuItem;
     }
 }
 

@@ -93,14 +93,13 @@ namespace UI
         {
             var selectedProduct = _productsController.GetSelectedProduct();
 
-            if (selectedProduct == null)
+            if (selectedProduct != null)
             {
-                _productsController.ThrowErrorMessage("Error al obtener producto seleccionado");
-                return;
+                var editFrm = new EditProductFrm(selectedProduct, _productsController);
+                editFrm.Show();         
             }
-
-            var editFrm = new EditProductFrm(selectedProduct, _productsController);
-            editFrm.Show();
+            else
+                _productsController.ThrowErrorMessage("Error al obtener producto seleccionado");
         }
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -144,5 +143,21 @@ namespace UI
         }
 
         private void productsGridView_ColumnHeaderMouseClick_1(object sender, DataGridViewCellMouseEventArgs e) => _productsController.SortColumn(e.ColumnIndex);
+
+        private void duplicarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var selectedItem = _productsController.GetSelectedProduct();
+
+            if (selectedItem != null)
+            {
+                var addProductFrm = new AddProductFrm(_productsController);
+                addProductFrm.SetInputs(selectedItem);
+                addProductFrm.Show();
+            }
+            else
+                _productsController.ThrowErrorMessage("Error al obtener producto seleccionado");
+
+            
+        }
     }
 }
