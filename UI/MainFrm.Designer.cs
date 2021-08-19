@@ -55,17 +55,18 @@ namespace UI
             this.nameInputFilter = new System.Windows.Forms.TextBox();
             this.dataGridPanel = new System.Windows.Forms.Panel();
             this.productsGridView = new System.Windows.Forms.DataGridView();
-            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Details = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.duplicarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.separator = new System.Windows.Forms.Panel();
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.duplicarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Details = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BuyPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -94,7 +95,7 @@ namespace UI
             this.titleBar.Controls.Add(this.btnMinimize);
             this.titleBar.Location = new System.Drawing.Point(3, 0);
             this.titleBar.Name = "titleBar";
-            this.titleBar.Size = new System.Drawing.Size(982, 51);
+            this.titleBar.Size = new System.Drawing.Size(1026, 51);
             this.titleBar.TabIndex = 0;
             this.titleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseDown);
             this.titleBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseMove);
@@ -108,7 +109,7 @@ namespace UI
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(983, 1);
+            this.panel2.Size = new System.Drawing.Size(1027, 1);
             this.panel2.TabIndex = 15;
             // 
             // btnMaximize
@@ -117,7 +118,7 @@ namespace UI
             this.btnMaximize.BackColor = System.Drawing.Color.Transparent;
             this.btnMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMaximize.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximize.Image")));
-            this.btnMaximize.Location = new System.Drawing.Point(902, 11);
+            this.btnMaximize.Location = new System.Drawing.Point(946, 11);
             this.btnMaximize.Name = "btnMaximize";
             this.btnMaximize.Size = new System.Drawing.Size(22, 22);
             this.btnMaximize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -131,7 +132,7 @@ namespace UI
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(942, 11);
+            this.btnClose.Location = new System.Drawing.Point(986, 11);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(22, 22);
             this.btnClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -145,7 +146,7 @@ namespace UI
             this.btnRestore.BackColor = System.Drawing.Color.Transparent;
             this.btnRestore.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRestore.Image = ((System.Drawing.Image)(resources.GetObject("btnRestore.Image")));
-            this.btnRestore.Location = new System.Drawing.Point(902, 11);
+            this.btnRestore.Location = new System.Drawing.Point(946, 11);
             this.btnRestore.Name = "btnRestore";
             this.btnRestore.Size = new System.Drawing.Size(22, 22);
             this.btnRestore.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -160,7 +161,7 @@ namespace UI
             this.btnMinimize.BackColor = System.Drawing.Color.Transparent;
             this.btnMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimize.Image")));
-            this.btnMinimize.Location = new System.Drawing.Point(862, 9);
+            this.btnMinimize.Location = new System.Drawing.Point(906, 9);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(23, 23);
             this.btnMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -190,7 +191,7 @@ namespace UI
             this.mainPanel.Controls.Add(this.separator);
             this.mainPanel.Location = new System.Drawing.Point(3, 44);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(982, 499);
+            this.mainPanel.Size = new System.Drawing.Size(1026, 499);
             this.mainPanel.TabIndex = 1;
             // 
             // panel1
@@ -201,7 +202,7 @@ namespace UI
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(983, 1);
+            this.panel1.Size = new System.Drawing.Size(1027, 1);
             this.panel1.TabIndex = 14;
             // 
             // saveBtn
@@ -333,10 +334,10 @@ namespace UI
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
             this.dataGridPanel.Controls.Add(this.productsGridView);
-            this.dataGridPanel.Location = new System.Drawing.Point(74, 188);
+            this.dataGridPanel.Location = new System.Drawing.Point(30, 188);
             this.dataGridPanel.Name = "dataGridPanel";
             this.dataGridPanel.Padding = new System.Windows.Forms.Padding(1);
-            this.dataGridPanel.Size = new System.Drawing.Size(841, 301);
+            this.dataGridPanel.Size = new System.Drawing.Size(968, 301);
             this.dataGridPanel.TabIndex = 0;
             // 
             // productsGridView
@@ -362,7 +363,8 @@ namespace UI
             this.Code,
             this.ProductName,
             this.Details,
-            this.Price});
+            this.Price,
+            this.BuyPrice});
             this.productsGridView.ContextMenuStrip = this.dataGridMenu;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(40)))));
@@ -387,9 +389,65 @@ namespace UI
             this.productsGridView.RowHeadersVisible = false;
             this.productsGridView.RowTemplate.ReadOnly = true;
             this.productsGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.productsGridView.Size = new System.Drawing.Size(833, 293);
+            this.productsGridView.Size = new System.Drawing.Size(960, 293);
             this.productsGridView.TabIndex = 2;
             this.productsGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.productsGridView_ColumnHeaderMouseClick_1);
+            // 
+            // dataGridMenu
+            // 
+            this.dataGridMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editarToolStripMenuItem,
+            this.duplicarToolStripMenuItem,
+            this.eliminarToolStripMenuItem});
+            this.dataGridMenu.Name = "dataGridMenu";
+            this.dataGridMenu.Size = new System.Drawing.Size(131, 70);
+            // 
+            // editarToolStripMenuItem
+            // 
+            this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.editarToolStripMenuItem.Text = "Editar";
+            this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
+            // 
+            // duplicarToolStripMenuItem
+            // 
+            this.duplicarToolStripMenuItem.Name = "duplicarToolStripMenuItem";
+            this.duplicarToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.duplicarToolStripMenuItem.Text = "Duplicar";
+            this.duplicarToolStripMenuItem.Click += new System.EventHandler(this.duplicarToolStripMenuItem_Click);
+            // 
+            // eliminarToolStripMenuItem
+            // 
+            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.eliminarToolStripMenuItem.Text = "Eliminar";
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
+            // 
+            // logoPictureBox
+            // 
+            this.logoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.Image")));
+            this.logoPictureBox.Location = new System.Drawing.Point(105, 6);
+            this.logoPictureBox.Name = "logoPictureBox";
+            this.logoPictureBox.Size = new System.Drawing.Size(202, 110);
+            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logoPictureBox.TabIndex = 1;
+            this.logoPictureBox.TabStop = false;
+            // 
+            // separator
+            // 
+            this.separator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.separator.AutoSize = true;
+            this.separator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
+            this.separator.Location = new System.Drawing.Point(93, 119);
+            this.separator.Name = "separator";
+            this.separator.Size = new System.Drawing.Size(844, 2);
+            this.separator.TabIndex = 0;
+            // 
+            // productBindingSource
+            // 
+            this.productBindingSource.DataSource = typeof(Models.Entities.Product);
             // 
             // Code
             // 
@@ -425,70 +483,23 @@ namespace UI
             this.Price.HeaderText = "Precio ($)";
             this.Price.Name = "Price";
             this.Price.ReadOnly = true;
-            this.Price.Width = 112;
+            this.Price.Width = 110;
             // 
-            // dataGridMenu
+            // BuyPrice
             // 
-            this.dataGridMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editarToolStripMenuItem,
-            this.duplicarToolStripMenuItem,
-            this.eliminarToolStripMenuItem});
-            this.dataGridMenu.Name = "dataGridMenu";
-            this.dataGridMenu.Size = new System.Drawing.Size(181, 92);
-            // 
-            // editarToolStripMenuItem
-            // 
-            this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editarToolStripMenuItem.Text = "Editar";
-            this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
-            // 
-            // eliminarToolStripMenuItem
-            // 
-            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.eliminarToolStripMenuItem.Text = "Eliminar";
-            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
-            // 
-            // logoPictureBox
-            // 
-            this.logoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.Image")));
-            this.logoPictureBox.Location = new System.Drawing.Point(105, 6);
-            this.logoPictureBox.Name = "logoPictureBox";
-            this.logoPictureBox.Size = new System.Drawing.Size(202, 110);
-            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logoPictureBox.TabIndex = 1;
-            this.logoPictureBox.TabStop = false;
-            // 
-            // separator
-            // 
-            this.separator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.separator.AutoSize = true;
-            this.separator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
-            this.separator.Location = new System.Drawing.Point(93, 119);
-            this.separator.Name = "separator";
-            this.separator.Size = new System.Drawing.Size(800, 2);
-            this.separator.TabIndex = 0;
-            // 
-            // productBindingSource
-            // 
-            this.productBindingSource.DataSource = typeof(Models.Entities.Product);
-            // 
-            // duplicarToolStripMenuItem
-            // 
-            this.duplicarToolStripMenuItem.Name = "duplicarToolStripMenuItem";
-            this.duplicarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.duplicarToolStripMenuItem.Text = "Duplicar";
-            this.duplicarToolStripMenuItem.Click += new System.EventHandler(this.duplicarToolStripMenuItem_Click);
+            this.BuyPrice.DataPropertyName = "BuyPrice";
+            this.BuyPrice.HeaderText = "Costo";
+            this.BuyPrice.Name = "BuyPrice";
+            this.BuyPrice.ReadOnly = true;
+            this.BuyPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.BuyPrice.Width = 111;
             // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
-            this.ClientSize = new System.Drawing.Size(988, 545);
+            this.ClientSize = new System.Drawing.Size(1032, 545);
             this.ControlBox = false;
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.titleBar);
@@ -531,10 +542,6 @@ namespace UI
         private System.Windows.Forms.DataGridView productsGridView;
         private System.Windows.Forms.Panel dataGridPanel;
         private System.Windows.Forms.BindingSource productBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Code;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Details;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.Panel separator;
         private System.Windows.Forms.TextBox codeInputFilter;
         private System.Windows.Forms.TextBox nameInputFilter;
@@ -552,6 +559,11 @@ namespace UI
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem duplicarToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Code;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Details;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BuyPrice;
     }
 }
 

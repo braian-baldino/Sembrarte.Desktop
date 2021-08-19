@@ -29,6 +29,7 @@ namespace UI
             descriptionInput.Text = product.Details;
             nameInput.Text = product.ProductName;
             priceInput.Value = (decimal)product.Price;
+            buyPriceInput.Value = (decimal)product.BuyPrice;
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
@@ -38,7 +39,8 @@ namespace UI
                 Code = codeInput?.Text ?? string.Empty,
                 ProductName = nameInput?.Text ?? string.Empty,
                 Details = descriptionInput?.Text ?? string.Empty,
-                Price = (double)priceInput.Value
+                Price = (double)priceInput.Value,
+                BuyPrice = (double)buyPriceInput.Value
             };
 
              var success = _productsController.AddProduct(newProduct);
@@ -61,6 +63,7 @@ namespace UI
             nameInput.Text = string.Empty;
             descriptionInput.Text = string.Empty;
             priceInput.Value = (decimal)0;
+            buyPriceInput.Value = (decimal)0;
         }
 
         #region Mouse Events

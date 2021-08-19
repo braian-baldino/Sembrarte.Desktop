@@ -71,6 +71,9 @@ namespace Infrastructure.Controllers
                 case "Price":
                     sortedData = SortAscending ? Products.OrderBy(x => x.Price).ToList() : Products.OrderByDescending(x => x.Price).ToList();
                     break;
+                case "BuyPrice":
+                    sortedData = SortAscending ? Products.OrderBy(x => x.BuyPrice).ToList() : Products.OrderByDescending(x => x.BuyPrice).ToList();
+                    break;
                 default:
                     sortedData = SortAscending ? Products.OrderBy(x => x.Code).ToList() : Products.OrderByDescending(x => x.Code).ToList();
                     break;
@@ -91,8 +94,9 @@ namespace Infrastructure.Controllers
                     var productName = (string)_gridView.SelectedRows[0].Cells[1].Value;
                     var details = (string)_gridView.SelectedRows[0].Cells[2].Value;
                     var price = (double)_gridView.SelectedRows[0].Cells[3].Value;
+                    var buyPrice = (double)_gridView.SelectedRows[0].Cells[4].Value;
 
-                    return Products.SingleOrDefault(p => p.Code == code && p.ProductName == productName && p.Details == details && p.Price == price);
+                    return Products.SingleOrDefault(p => p.Code == code && p.ProductName == productName && p.Details == details && p.Price == price && p.BuyPrice == buyPrice);
                 }
                 catch (Exception)
                 {
@@ -143,12 +147,14 @@ namespace Infrastructure.Controllers
                 var code = (string)_gridView.SelectedRows[0].Cells[0].Value;
                 var productName = (string)_gridView.SelectedRows[0].Cells[1].Value;
                 var details = (string)_gridView.SelectedRows[0].Cells[2].Value;
+                var price = (double)_gridView.SelectedRows[0].Cells[3].Value;
+                var buyPrice = (double)_gridView.SelectedRows[0].Cells[4].Value;
 
                 var gridProducts = GetGridProducts();
 
                 foreach (var p in Products)
                 {
-                    if (p.Code == code && p.ProductName == productName && p.Details == details)
+                    if (p.Code == code && p.ProductName == productName && p.Details == details && p.Price == price && p.BuyPrice == buyPrice)
                     {
                         gridProducts.Remove(p);
                         Products.Remove(p);
@@ -167,7 +173,8 @@ namespace Infrastructure.Controllers
                 if(p.Code == product.Code
                     && p.Details == product.Details
                     && p.ProductName == product.ProductName
-                    && p.Price == product.Price)
+                    && p.Price == product.Price
+                    && p.BuyPrice == product.BuyPrice)
                 {
                     return false;
                 }
@@ -196,6 +203,7 @@ namespace Infrastructure.Controllers
                         p.ProductName = newProductInfo.ProductName;
                         p.Details = newProductInfo.Details;
                         p.Price = newProductInfo.Price;
+                        p.BuyPrice = newProductInfo.BuyPrice;
                         break;
                     }
                 }

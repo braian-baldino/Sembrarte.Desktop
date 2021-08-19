@@ -49,12 +49,15 @@ namespace UI
             this.lblName = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblCode = new System.Windows.Forms.Label();
+            this.buyPriceInput = new System.Windows.Forms.NumericUpDown();
+            this.lblBuyPrice = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).BeginInit();
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buyPriceInput)).BeginInit();
             this.SuspendLayout();
             // 
             // btnMinimize
@@ -141,6 +144,8 @@ namespace UI
             // mainPanel
             // 
             this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(40)))));
+            this.mainPanel.Controls.Add(this.buyPriceInput);
+            this.mainPanel.Controls.Add(this.lblBuyPrice);
             this.mainPanel.Controls.Add(this.nameInput);
             this.mainPanel.Controls.Add(this.descriptionInput);
             this.mainPanel.Controls.Add(this.codeInput);
@@ -155,7 +160,7 @@ namespace UI
             this.mainPanel.Controls.Add(this.lblCode);
             this.mainPanel.Location = new System.Drawing.Point(3, 44);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(372, 353);
+            this.mainPanel.Size = new System.Drawing.Size(372, 391);
             this.mainPanel.TabIndex = 0;
             // 
             // nameInput
@@ -308,12 +313,41 @@ namespace UI
             this.lblCode.TabIndex = 0;
             this.lblCode.Text = "Codigo";
             // 
+            // buyPriceInput
+            // 
+            this.buyPriceInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
+            this.buyPriceInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.buyPriceInput.DecimalPlaces = 2;
+            this.buyPriceInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buyPriceInput.ForeColor = System.Drawing.SystemColors.Window;
+            this.buyPriceInput.Location = new System.Drawing.Point(46, 358);
+            this.buyPriceInput.Maximum = new decimal(new int[] {
+            1316134911,
+            2328,
+            0,
+            0});
+            this.buyPriceInput.Name = "buyPriceInput";
+            this.buyPriceInput.Size = new System.Drawing.Size(92, 18);
+            this.buyPriceInput.TabIndex = 16;
+            // 
+            // lblBuyPrice
+            // 
+            this.lblBuyPrice.AutoSize = true;
+            this.lblBuyPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblBuyPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuyPrice.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblBuyPrice.Location = new System.Drawing.Point(42, 333);
+            this.lblBuyPrice.Name = "lblBuyPrice";
+            this.lblBuyPrice.Size = new System.Drawing.Size(49, 18);
+            this.lblBuyPrice.TabIndex = 15;
+            this.lblBuyPrice.Text = "Costo";
+            // 
             // AddProductFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
-            this.ClientSize = new System.Drawing.Size(378, 399);
+            this.ClientSize = new System.Drawing.Size(378, 437);
             this.ControlBox = false;
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.titleBar);
@@ -330,6 +364,7 @@ namespace UI
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buyPriceInput)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -354,5 +389,7 @@ namespace UI
         private System.Windows.Forms.TextBox codeInput;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.NumericUpDown buyPriceInput;
+        private System.Windows.Forms.Label lblBuyPrice;
     }
 }

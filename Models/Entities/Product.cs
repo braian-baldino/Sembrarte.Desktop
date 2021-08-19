@@ -9,5 +9,6 @@ namespace Models.Entities
         public string ProductName { get; set; }
         public string Details { get; set; }
         public double Price { get; set; }
+        public double BuyPrice { get; set; }
     }
 }

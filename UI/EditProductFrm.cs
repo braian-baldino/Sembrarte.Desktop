@@ -39,7 +39,8 @@ namespace UI
                 Code = codeInput.Text,
                 ProductName = nameInput.Text,
                 Details = descriptionInput.Text,
-                Price = (double)priceInput.Value
+                Price = (double)priceInput.Value,
+                BuyPrice = (double)buyPriceInput.Value
             };
 
             var success = _productsController.EditProduct(editedProduct);
@@ -57,6 +58,7 @@ namespace UI
             nameInput.Text = _product.ProductName;
             descriptionInput.Text = _product.Details;
             priceInput.Value = (decimal)_product.Price;
+            buyPriceInput.Value = (decimal)_product.BuyPrice;
         }
 
         #region Mouse Events

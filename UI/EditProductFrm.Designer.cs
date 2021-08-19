@@ -31,6 +31,8 @@ namespace UI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditProductFrm));
             this.titleBar = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.btnMinimize = new System.Windows.Forms.PictureBox();
@@ -47,14 +49,15 @@ namespace UI
             this.lblDescription = new System.Windows.Forms.Label();
             this.codeInput = new System.Windows.Forms.TextBox();
             this.lblCode = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.buyPriceInput = new System.Windows.Forms.NumericUpDown();
+            this.lblBuyPrice = new System.Windows.Forms.Label();
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).BeginInit();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buyPriceInput)).BeginInit();
             this.SuspendLayout();
             // 
             // titleBar
@@ -72,6 +75,28 @@ namespace UI
             this.titleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseDown);
             this.titleBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseMove);
             this.titleBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.titleBar_MouseUp);
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.AutoSize = true;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(372, 1);
+            this.panel2.TabIndex = 13;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoSize = true;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
+            this.panel1.Location = new System.Drawing.Point(0, 41);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(372, 1);
+            this.panel1.TabIndex = 12;
             // 
             // lblTitle
             // 
@@ -119,6 +144,8 @@ namespace UI
             // mainPanel
             // 
             this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(40)))));
+            this.mainPanel.Controls.Add(this.buyPriceInput);
+            this.mainPanel.Controls.Add(this.lblBuyPrice);
             this.mainPanel.Controls.Add(this.btnCancel);
             this.mainPanel.Controls.Add(this.btnAccept);
             this.mainPanel.Controls.Add(this.logoPictureBox1);
@@ -133,7 +160,7 @@ namespace UI
             this.mainPanel.Controls.Add(this.lblCode);
             this.mainPanel.Location = new System.Drawing.Point(2, 44);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(372, 353);
+            this.mainPanel.Size = new System.Drawing.Size(372, 416);
             this.mainPanel.TabIndex = 4;
             // 
             // btnCancel
@@ -286,34 +313,41 @@ namespace UI
             this.lblCode.TabIndex = 0;
             this.lblCode.Text = "Codigo";
             // 
-            // panel1
+            // buyPriceInput
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.AutoSize = true;
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
-            this.panel1.Location = new System.Drawing.Point(0, 41);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(372, 1);
-            this.panel1.TabIndex = 12;
+            this.buyPriceInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
+            this.buyPriceInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.buyPriceInput.DecimalPlaces = 2;
+            this.buyPriceInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buyPriceInput.ForeColor = System.Drawing.SystemColors.Window;
+            this.buyPriceInput.Location = new System.Drawing.Point(47, 375);
+            this.buyPriceInput.Maximum = new decimal(new int[] {
+            1316134911,
+            2328,
+            0,
+            0});
+            this.buyPriceInput.Name = "buyPriceInput";
+            this.buyPriceInput.Size = new System.Drawing.Size(92, 18);
+            this.buyPriceInput.TabIndex = 13;
             // 
-            // panel2
+            // lblBuyPrice
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.AutoSize = true;
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(372, 1);
-            this.panel2.TabIndex = 13;
+            this.lblBuyPrice.AutoSize = true;
+            this.lblBuyPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblBuyPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuyPrice.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblBuyPrice.Location = new System.Drawing.Point(43, 350);
+            this.lblBuyPrice.Name = "lblBuyPrice";
+            this.lblBuyPrice.Size = new System.Drawing.Size(49, 18);
+            this.lblBuyPrice.TabIndex = 12;
+            this.lblBuyPrice.Text = "Costo";
             // 
             // EditProductFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
-            this.ClientSize = new System.Drawing.Size(376, 399);
+            this.ClientSize = new System.Drawing.Size(376, 463);
             this.ControlBox = false;
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.titleBar);
@@ -330,6 +364,7 @@ namespace UI
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buyPriceInput)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -355,5 +390,7 @@ namespace UI
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.NumericUpDown buyPriceInput;
+        private System.Windows.Forms.Label lblBuyPrice;
     }
 }
