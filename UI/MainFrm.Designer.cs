@@ -42,6 +42,7 @@ namespace UI
             this.btnRestore = new System.Windows.Forms.PictureBox();
             this.btnMinimize = new System.Windows.Forms.PictureBox();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.calculateBuyPriceBtn = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.saveBtn = new System.Windows.Forms.PictureBox();
             this.addBtn = new System.Windows.Forms.PictureBox();
@@ -73,6 +74,7 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.btnRestore)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).BeginInit();
             this.mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.calculateBuyPriceBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saveBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceInputFilter)).BeginInit();
@@ -175,6 +177,7 @@ namespace UI
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(40)))));
+            this.mainPanel.Controls.Add(this.calculateBuyPriceBtn);
             this.mainPanel.Controls.Add(this.panel1);
             this.mainPanel.Controls.Add(this.saveBtn);
             this.mainPanel.Controls.Add(this.addBtn);
@@ -194,6 +197,18 @@ namespace UI
             this.mainPanel.Size = new System.Drawing.Size(1026, 499);
             this.mainPanel.TabIndex = 1;
             // 
+            // calculateBuyPriceBtn
+            // 
+            this.calculateBuyPriceBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.calculateBuyPriceBtn.Image = ((System.Drawing.Image)(resources.GetObject("calculateBuyPriceBtn.Image")));
+            this.calculateBuyPriceBtn.Location = new System.Drawing.Point(458, 41);
+            this.calculateBuyPriceBtn.Name = "calculateBuyPriceBtn";
+            this.calculateBuyPriceBtn.Size = new System.Drawing.Size(39, 44);
+            this.calculateBuyPriceBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.calculateBuyPriceBtn.TabIndex = 15;
+            this.calculateBuyPriceBtn.TabStop = false;
+            this.calculateBuyPriceBtn.Click += new System.EventHandler(this.calculateBuyPriceBtn_Click);
+            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -209,9 +224,9 @@ namespace UI
             // 
             this.saveBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.saveBtn.Image = ((System.Drawing.Image)(resources.GetObject("saveBtn.Image")));
-            this.saveBtn.Location = new System.Drawing.Point(450, 41);
+            this.saveBtn.Location = new System.Drawing.Point(527, 41);
             this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(36, 37);
+            this.saveBtn.Size = new System.Drawing.Size(39, 44);
             this.saveBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.saveBtn.TabIndex = 13;
             this.saveBtn.TabStop = false;
@@ -223,7 +238,7 @@ namespace UI
             this.addBtn.Image = ((System.Drawing.Image)(resources.GetObject("addBtn.Image")));
             this.addBtn.Location = new System.Drawing.Point(385, 41);
             this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(39, 37);
+            this.addBtn.Size = new System.Drawing.Size(39, 44);
             this.addBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.addBtn.TabIndex = 12;
             this.addBtn.TabStop = false;
@@ -234,7 +249,7 @@ namespace UI
             this.lblDetailsFilter.AutoSize = true;
             this.lblDetailsFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDetailsFilter.ForeColor = System.Drawing.Color.White;
-            this.lblDetailsFilter.Location = new System.Drawing.Point(582, 139);
+            this.lblDetailsFilter.Location = new System.Drawing.Point(582, 138);
             this.lblDetailsFilter.Name = "lblDetailsFilter";
             this.lblDetailsFilter.Size = new System.Drawing.Size(58, 16);
             this.lblDetailsFilter.TabIndex = 11;
@@ -244,11 +259,11 @@ namespace UI
             // 
             this.detailsInputFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
             this.detailsInputFilter.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.detailsInputFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.detailsInputFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.detailsInputFilter.ForeColor = System.Drawing.Color.White;
-            this.detailsInputFilter.Location = new System.Drawing.Point(501, 158);
+            this.detailsInputFilter.Location = new System.Drawing.Point(501, 157);
             this.detailsInputFilter.Name = "detailsInputFilter";
-            this.detailsInputFilter.Size = new System.Drawing.Size(231, 15);
+            this.detailsInputFilter.Size = new System.Drawing.Size(231, 17);
             this.detailsInputFilter.TabIndex = 10;
             this.detailsInputFilter.TextChanged += new System.EventHandler(this.detailsInputFilter_TextChanged);
             // 
@@ -257,16 +272,16 @@ namespace UI
             this.priceInputFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
             this.priceInputFilter.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.priceInputFilter.DecimalPlaces = 2;
-            this.priceInputFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceInputFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.priceInputFilter.ForeColor = System.Drawing.Color.White;
-            this.priceInputFilter.Location = new System.Drawing.Point(748, 156);
+            this.priceInputFilter.Location = new System.Drawing.Point(748, 155);
             this.priceInputFilter.Maximum = new decimal(new int[] {
             1316134911,
             2328,
             0,
             0});
             this.priceInputFilter.Name = "priceInputFilter";
-            this.priceInputFilter.Size = new System.Drawing.Size(86, 18);
+            this.priceInputFilter.Size = new System.Drawing.Size(86, 20);
             this.priceInputFilter.TabIndex = 9;
             this.priceInputFilter.ValueChanged += new System.EventHandler(this.priceInputFilter_ValueChanged);
             // 
@@ -275,7 +290,7 @@ namespace UI
             this.lblPriceFilter.AutoSize = true;
             this.lblPriceFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPriceFilter.ForeColor = System.Drawing.Color.White;
-            this.lblPriceFilter.Location = new System.Drawing.Point(765, 135);
+            this.lblPriceFilter.Location = new System.Drawing.Point(765, 134);
             this.lblPriceFilter.Name = "lblPriceFilter";
             this.lblPriceFilter.Size = new System.Drawing.Size(47, 16);
             this.lblPriceFilter.TabIndex = 8;
@@ -286,7 +301,7 @@ namespace UI
             this.lblNameFilter.AutoSize = true;
             this.lblNameFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNameFilter.ForeColor = System.Drawing.Color.White;
-            this.lblNameFilter.Location = new System.Drawing.Point(358, 139);
+            this.lblNameFilter.Location = new System.Drawing.Point(358, 138);
             this.lblNameFilter.Name = "lblNameFilter";
             this.lblNameFilter.Size = new System.Drawing.Size(57, 16);
             this.lblNameFilter.TabIndex = 7;
@@ -297,7 +312,7 @@ namespace UI
             this.lblCodeFilter.AutoSize = true;
             this.lblCodeFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodeFilter.ForeColor = System.Drawing.Color.White;
-            this.lblCodeFilter.Location = new System.Drawing.Point(178, 139);
+            this.lblCodeFilter.Location = new System.Drawing.Point(178, 138);
             this.lblCodeFilter.Name = "lblCodeFilter";
             this.lblCodeFilter.Size = new System.Drawing.Size(52, 16);
             this.lblCodeFilter.TabIndex = 6;
@@ -307,11 +322,11 @@ namespace UI
             // 
             this.codeInputFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
             this.codeInputFilter.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.codeInputFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.codeInputFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.codeInputFilter.ForeColor = System.Drawing.Color.White;
-            this.codeInputFilter.Location = new System.Drawing.Point(146, 158);
+            this.codeInputFilter.Location = new System.Drawing.Point(146, 157);
             this.codeInputFilter.Name = "codeInputFilter";
-            this.codeInputFilter.Size = new System.Drawing.Size(126, 15);
+            this.codeInputFilter.Size = new System.Drawing.Size(126, 17);
             this.codeInputFilter.TabIndex = 4;
             this.codeInputFilter.TextChanged += new System.EventHandler(this.codeInputFilter_TextChanged);
             // 
@@ -319,11 +334,11 @@ namespace UI
             // 
             this.nameInputFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
             this.nameInputFilter.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.nameInputFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameInputFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameInputFilter.ForeColor = System.Drawing.Color.White;
-            this.nameInputFilter.Location = new System.Drawing.Point(288, 158);
+            this.nameInputFilter.Location = new System.Drawing.Point(288, 157);
             this.nameInputFilter.Name = "nameInputFilter";
-            this.nameInputFilter.Size = new System.Drawing.Size(198, 15);
+            this.nameInputFilter.Size = new System.Drawing.Size(198, 17);
             this.nameInputFilter.TabIndex = 3;
             this.nameInputFilter.TextChanged += new System.EventHandler(this.nameInputFilter_TextChanged);
             // 
@@ -366,6 +381,7 @@ namespace UI
             this.Price,
             this.BuyPrice});
             this.productsGridView.ContextMenuStrip = this.dataGridMenu;
+            this.productsGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(84)))), ((int)(((byte)(40)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -488,7 +504,7 @@ namespace UI
             // BuyPrice
             // 
             this.BuyPrice.DataPropertyName = "BuyPrice";
-            this.BuyPrice.HeaderText = "Costo";
+            this.BuyPrice.HeaderText = "Costo ($)";
             this.BuyPrice.Name = "BuyPrice";
             this.BuyPrice.ReadOnly = true;
             this.BuyPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -518,6 +534,7 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).EndInit();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.calculateBuyPriceBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saveBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceInputFilter)).EndInit();
@@ -559,6 +576,7 @@ namespace UI
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem duplicarToolStripMenuItem;
+        private System.Windows.Forms.PictureBox calculateBuyPriceBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Code;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Details;

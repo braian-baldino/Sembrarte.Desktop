@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Controllers\FiltersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Utilities\Calculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serializer\Xml.cs" />
   </ItemGroup>

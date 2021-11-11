@@ -37,6 +37,8 @@ namespace UI
             this.btnClose = new System.Windows.Forms.PictureBox();
             this.btnMinimize = new System.Windows.Forms.PictureBox();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.buyPriceInput = new System.Windows.Forms.NumericUpDown();
+            this.lblBuyPrice = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
             this.logoPictureBox1 = new System.Windows.Forms.PictureBox();
@@ -49,15 +51,13 @@ namespace UI
             this.lblDescription = new System.Windows.Forms.Label();
             this.codeInput = new System.Windows.Forms.TextBox();
             this.lblCode = new System.Windows.Forms.Label();
-            this.buyPriceInput = new System.Windows.Forms.NumericUpDown();
-            this.lblBuyPrice = new System.Windows.Forms.Label();
             this.titleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).BeginInit();
             this.mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buyPriceInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceInput)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buyPriceInput)).BeginInit();
             this.SuspendLayout();
             // 
             // titleBar
@@ -162,6 +162,35 @@ namespace UI
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(372, 416);
             this.mainPanel.TabIndex = 4;
+            // 
+            // buyPriceInput
+            // 
+            this.buyPriceInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
+            this.buyPriceInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.buyPriceInput.DecimalPlaces = 2;
+            this.buyPriceInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buyPriceInput.ForeColor = System.Drawing.SystemColors.Window;
+            this.buyPriceInput.Location = new System.Drawing.Point(47, 375);
+            this.buyPriceInput.Maximum = new decimal(new int[] {
+            1316134911,
+            2328,
+            0,
+            0});
+            this.buyPriceInput.Name = "buyPriceInput";
+            this.buyPriceInput.Size = new System.Drawing.Size(92, 18);
+            this.buyPriceInput.TabIndex = 13;
+            // 
+            // lblBuyPrice
+            // 
+            this.lblBuyPrice.AutoSize = true;
+            this.lblBuyPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblBuyPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuyPrice.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblBuyPrice.Location = new System.Drawing.Point(43, 350);
+            this.lblBuyPrice.Name = "lblBuyPrice";
+            this.lblBuyPrice.Size = new System.Drawing.Size(49, 18);
+            this.lblBuyPrice.TabIndex = 12;
+            this.lblBuyPrice.Text = "Costo";
             // 
             // btnCancel
             // 
@@ -313,35 +342,6 @@ namespace UI
             this.lblCode.TabIndex = 0;
             this.lblCode.Text = "Codigo";
             // 
-            // buyPriceInput
-            // 
-            this.buyPriceInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(199)))), ((int)(((byte)(100)))));
-            this.buyPriceInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.buyPriceInput.DecimalPlaces = 2;
-            this.buyPriceInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buyPriceInput.ForeColor = System.Drawing.SystemColors.Window;
-            this.buyPriceInput.Location = new System.Drawing.Point(47, 375);
-            this.buyPriceInput.Maximum = new decimal(new int[] {
-            1316134911,
-            2328,
-            0,
-            0});
-            this.buyPriceInput.Name = "buyPriceInput";
-            this.buyPriceInput.Size = new System.Drawing.Size(92, 18);
-            this.buyPriceInput.TabIndex = 13;
-            // 
-            // lblBuyPrice
-            // 
-            this.lblBuyPrice.AutoSize = true;
-            this.lblBuyPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblBuyPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuyPrice.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblBuyPrice.Location = new System.Drawing.Point(43, 350);
-            this.lblBuyPrice.Name = "lblBuyPrice";
-            this.lblBuyPrice.Size = new System.Drawing.Size(49, 18);
-            this.lblBuyPrice.TabIndex = 12;
-            this.lblBuyPrice.Text = "Costo";
-            // 
             // EditProductFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -362,9 +362,9 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimize)).EndInit();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buyPriceInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceInput)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buyPriceInput)).EndInit();
             this.ResumeLayout(false);
 
         }

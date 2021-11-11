@@ -1,7 +1,9 @@
 ﻿using Infrastructure.Controllers;
 using Models.Entities;
+using SembrarteApp;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace UI
@@ -134,7 +136,8 @@ namespace UI
             try
             {
                 _productsController.SaveData();
-                MessageBox.Show("Se guardo todo re piola!", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if(_productsController.Products.Any())
+                 MessageBox.Show("Se guardo todo re piola!", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception)
             {
@@ -158,6 +161,12 @@ namespace UI
                 _productsController.ThrowErrorMessage("Error al obtener producto seleccionado");
 
             
+        }
+
+        private void calculateBuyPriceBtn_Click(object sender, EventArgs e)
+        {
+            var calculateBuyPriceForm = new CalculateBuyPriceForm(_productsController);
+            calculateBuyPriceForm.Show();
         }
     }
 }

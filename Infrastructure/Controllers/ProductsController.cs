@@ -46,7 +46,8 @@ namespace Infrastructure.Controllers
         {
             try
             {
-                Xml<List<Product>>.SaveBinaryXml("sembrarteDB.bin", Products);
+                if(Products != null && Products.Any())
+                    Xml<List<Product>>.SaveBinaryXml("sembrarteDB.bin", Products);
             }
             catch (Exception)
             {
@@ -57,25 +58,26 @@ namespace Infrastructure.Controllers
         public void SortColumn(int columnIndex)
         {
             List<Product> sortedData;
+            var gridElements = GetGridProducts();
             switch (_gridView.Columns[columnIndex].DataPropertyName)
             {
                 case "Code":
-                    sortedData = SortAscending?Products.OrderBy(x => x.Code).ToList(): Products.OrderByDescending(x => x.Code).ToList();
+                    sortedData = SortAscending?gridElements.OrderBy(x => x.Code).ToList(): gridElements.OrderByDescending(x => x.Code).ToList();
                     break;
                 case "ProductName":
-                    sortedData = SortAscending ? Products.OrderBy(x => x.ProductName).ToList() : Products.OrderByDescending(x => x.ProductName).ToList();
+                    sortedData = SortAscending ? gridElements.OrderBy(x => x.ProductName).ToList() : gridElements.OrderByDescending(x => x.ProductName).ToList();
                     break;
                 case "Details":
-                    sortedData = SortAscending ? Products.OrderBy(x => x.Details).ToList() : Products.OrderByDescending(x => x.Details).ToList();
+                    sortedData = SortAscending ? gridElements.OrderBy(x => x.Details).ToList() : gridElements.OrderByDescending(x => x.Details).ToList();
                     break;
                 case "Price":
-                    sortedData = SortAscending ? Products.OrderBy(x => x.Price).ToList() : Products.OrderByDescending(x => x.Price).ToList();
+                    sortedData = SortAscending ? gridElements.OrderBy(x => x.Price).ToList() : gridElements.OrderByDescending(x => x.Price).ToList();
                     break;
                 case "BuyPrice":
-                    sortedData = SortAscending ? Products.OrderBy(x => x.BuyPrice).ToList() : Products.OrderByDescending(x => x.BuyPrice).ToList();
+                    sortedData = SortAscending ? gridElements.OrderBy(x => x.BuyPrice).ToList() : gridElements.OrderByDescending(x => x.BuyPrice).ToList();
                     break;
                 default:
-                    sortedData = SortAscending ? Products.OrderBy(x => x.Code).ToList() : Products.OrderByDescending(x => x.Code).ToList();
+                    sortedData = SortAscending ? gridElements.OrderBy(x => x.Code).ToList() : gridElements.OrderByDescending(x => x.Code).ToList();
                     break;
             }
 
@@ -231,6 +233,8 @@ namespace Infrastructure.Controllers
             _gridView.DataSource = new List<Product>();
             _gridView.DataSource = products;
         }
+
+        public void UpdateGridFromFilteredGrid() => UpdateGrid(GetGridProducts());
 
         private List<Product> GetGridProducts() => (List<Product>)_gridView.DataSource ?? new List<Product>();
 
