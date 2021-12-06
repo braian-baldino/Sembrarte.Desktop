@@ -1,5 +1,5 @@
 ﻿using Infrastructure.Controllers;
-using Infrastructure.Entities;
+using Models.Entities;
 using SembrarteApp;
 using System;
 using System.Collections.Generic;

@@ -4,7 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Infrastructure.Serializer
 {
-    public static class Dao<T> where T : class, new()
+    public static class Xml<T> where T : class, new()
     {
         /// <summary>
         /// Saves the given data in a binary XML file in My Documents.
@@ -12,7 +12,7 @@ namespace Infrastructure.Serializer
         /// <param name="fileName"></param>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static bool SaveBinary(string fileName, T data)
+        public static bool SaveBinaryXml(string fileName, T data)
         {
             bool retorno = false;
             if (!string.IsNullOrEmpty(fileName) && !ReferenceEquals(data, null))
