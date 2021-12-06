@@ -1,5 +1,5 @@
 ﻿using Infrastructure.Controllers;
-using Models.Entities;
+using Infrastructure.Entities;
 using System;
 using System.Windows.Forms;
 

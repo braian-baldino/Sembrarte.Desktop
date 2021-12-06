@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Models.Entities
+namespace Infrastructure.Entities
 {
     [Serializable]
     public class Product

@@ -463,7 +463,7 @@ namespace UI
             // 
             // productBindingSource
             // 
-            this.productBindingSource.DataSource = typeof(Models.Entities.Product);
+            this.productBindingSource.DataSource = typeof(Infrastructure.Entities.Product);
             // 
             // Code
             // 

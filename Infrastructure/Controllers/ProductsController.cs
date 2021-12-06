@@ -1,9 +1,12 @@
-﻿using Infrastructure.Serializer;
-using Models.Entities;
+﻿using CsvHelper;
+using Infrastructure.Serializer;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
+using Infrastructure.Entities;
 
 namespace Infrastructure.Controllers
 {
@@ -26,7 +29,7 @@ namespace Infrastructure.Controllers
         {
             try
             {
-                if (Xml<List<Product>>.ReadBinary("sembrarteDB.bin", out List<Product> _data))
+                if (Dao<List<Product>>.ReadBinary("sembrarteDB.bin", out List<Product> _data))
                 {
                     Products = _data
                         .OrderBy(x => x.Code)
@@ -47,7 +50,7 @@ namespace Infrastructure.Controllers
             try
             {
                 if(Products != null && Products.Any())
-                    Xml<List<Product>>.SaveBinaryXml("sembrarteDB.bin", Products);
+                    Dao<List<Product>>.SaveBinary("sembrarteDB.bin", Products);
             }
             catch (Exception)
             {
@@ -183,6 +186,19 @@ namespace Infrastructure.Controllers
             }
 
             return true;
+        }
+        public void SaveProductsListToCsv()
+        {
+            var path = Path.Combine(Environment.CurrentDirectory, $"test-{DateTime.Now.ToFileTime()}.csv");
+            using (var streamWriter = new StreamWriter(path))
+            {
+                using(var csvWriter = new CsvWriter(streamWriter, CultureInfo.InvariantCulture))
+                {
+                    var productsInfo = Products.Select(x => x.ToProductInfo()).ToList();
+                    csvWriter.Context.RegisterClassMap<ProductClassMap>();
+                    csvWriter.WriteRecords(productsInfo);
+                }
+            }
         }
 
         public bool EditProduct(Product newProductInfo)
