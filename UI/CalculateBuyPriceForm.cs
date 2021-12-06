@@ -51,11 +51,12 @@ namespace SembrarteApp
             {
                 var filterCode = (string)codeComboBox.SelectedItem ?? string.Empty;
                 var porcentage = (int)porcentageInput.Value;
-                var productsCount = _products.Where(p => p.Code == filterCode && p.BuyPrice > 0).ToList().Count;
+                var productsToUpdate = _products.Where(p => p.Code.Trim().ToLower() == filterCode && p.BuyPrice > 0).ToList();
+                var productsCount = _products.Where(p => p.Code.Trim().ToLower() == filterCode).ToList().Count;
                 var ivaText = ivaCheckBox.Checked ? "Incluido" : "No incluido";
 
                 var sb = new StringBuilder();
-                sb.AppendLine($"Se aplicara el {porcentage}% a {productsCount} productos:");
+                sb.AppendLine($"Se aplicara el {porcentage}% a {productsToUpdate.Count} productos de {productsCount}:");
                 sb.AppendLine($"Codigo: {filterCode}");
                 sb.AppendLine($"IVA: {ivaText}");
 
@@ -63,14 +64,10 @@ namespace SembrarteApp
 
                 if (response == DialogResult.Yes)
                 {
-                    foreach (var product in _products)
+                    foreach (var product in productsToUpdate)
                     {
-                        if (product.Code == filterCode && product.BuyPrice > 0)
-                        {
-                            var buyPrice = ivaCheckBox.Checked ? Calculator.CalculateIVA(product.BuyPrice) : product.BuyPrice;
-                            product.Price = Calculator.ApplyPorcentage(buyPrice, porcentage);
-                        }
-                            
+                        var buyPrice = ivaCheckBox.Checked ? Calculator.CalculateIVA(product.BuyPrice) : product.BuyPrice;
+                        product.Price = Calculator.ApplyPorcentage(buyPrice, porcentage);
                     }
 
                     _productsController.UpdateGridFromFilteredGrid();
